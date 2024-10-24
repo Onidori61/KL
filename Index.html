@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaio e Lohana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&family=Lora:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a202c; /* Fundo escuro */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1f2937;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            position: relative;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .dot.red {
+            background-color: red;
+            top: 10px;
+            left: 10px;
+        }
+
+        .dot.yellow {
+            background-color: yellow;
+            top: 10px;
+            left: 30px;
+        }
+
+        .dot.green {
+            background-color: green;
+            top: 10px;
+            left: 50px;
+        }
+
+        .carousel {
+            margin-top: 20px;
+        }
+
+        .carousel-images {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-image {
+            min-width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+            height: 350px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff0000; /* Vermelho */
+            text-align: center;
+            font-size: 2rem; /* Tamanho do título */
+            margin: 10px 0;
+        }
+
+        p {
+            color: #e2e8f0; /* Texto claro */
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .time-together {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .time-box {
+            background-color: #2d3748; /* Fundo da caixa */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1; /* Para caixas de tamanho igual */
+        }
+
+        .music-player {
+            background-color: #1a202c; /* Fundo escuro */
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+        </div>
+
+        <div class="carousel">
+            <div class="carousel-images" id="carousel-images">
+                <!-- Imagens fornecidas pelo usuário -->
+                <img src="https://i.ibb.co/r64r9XY/1.jpg" alt="Foto 1" class="carousel-image">
+                <img src="https://i.ibb.co/5MW6LGj/2.jpg" alt="Foto 2" class="carousel-image">
+                <img src="https://i.ibb.co/9ZfCmg7/3.jpg" alt="Foto 3" class="carousel-image">
+                <img src="https://i.ibb.co/RYT8cHP/4.jpg" alt="Foto 4" class="carousel-image">
+                <img src="https://i.ibb.co/PhTYW6w/5.jpg" alt="Foto 5" class="carousel-image">
+                <img src="https://i.ibb.co/pw8Y4QS/6.jpg" alt="Foto 6" class="carousel-image">
+                <img src="https://i.ibb.co/wdjQPtC/7.jpg" alt="Foto 7" class="carousel-image">
+                <img src="https://i.ibb.co/d4tq6X5/8.jpg" alt="Foto 8" class="carousel-image">
+                <img src="https://i.ibb.co/gJLdr5y/9.jpg" alt="Foto 9" class="carousel-image">
+            </div>
+        </div>
+
+        <h1>Kaio e Lohana</h1>
+        <p>"Amo-te mais que tudo, minha linda. Seus olhos são a chama da minha alma, sua presença é a melhor notícia do dia. Te amo hoje, amo-te sempre, amo-te incondicionalmente."</p>
+
+        <div class="time-together">
+            <div class="time-box" id="anos">0 anos</div>
+            <div class="time-box" id="dias">0 dias</div>
+            <div class="time-box" id="horas">0 horas</div>
+            <div class="time-box" id="minutos">0 minutos</div>
+            <div class="time-box" id="segundos">0 segundos</div>
+        </div>
+
+        <div class="music-player">
+            <div class="music-controls">
+                <button id="play-button" style="background-color: red; border: none; padding: 10px; border-radius: 5px; color: white;">Play</button>
+                <input type="range" min="0" max="100" value="30" style="border-radius: 5px;">
+            </div>
+            <iframe style="border-radius:10px" src="https://open.spotify.com/embed/playlist/4l6FawRf4VPeX3v91pPfqh?utm_source=generator&autoplay=1" width="100%" height="120" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const startDate = new Date("2024-09-30T00:00:00");
+        const updateTime = () => {
+            const now = new Date();
+            const diff = Math.floor((now - startDate) / 1000); // diferença em segundos
+
+            const anos = Math.floor(diff / (365 * 24 * 60 * 60));
+            const dias = Math.floor((diff % (365 * 24 * 60 * 60)) / (24 * 60 * 60));
+            const horas = Math.floor((diff % (24 * 60 * 60)) / (60 * 60));
+            const minutos = Math.floor((diff % (60 * 60)) / 60);
+            const segundos = diff % 60;
+
+            document.getElementById("anos").innerText = `${anos} anos`;
+            document.getElementById("dias").innerText = `${dias} dias`;
+            document.getElementById("horas").innerText = `${horas} horas`;
+            document.getElementById("minutos").innerText = `${minutos} minutos`;
+            document.getElementById("segundos").innerText = `${segundos} segundos`;
+        };
+
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+
+</html>
