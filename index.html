@@ -25,54 +25,42 @@
             position: relative;
         }
 
-        .header {
-            position: relative;
-            background-color: white;
-            padding: 10px;
-            border-radius: 10px 10px 0 0;
-            text-align: center;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            position: absolute;
-        }
-
-        .dot.red {
-            background-color: red;
-            top: 10px;
-            left: 10px;
-        }
-
-        .dot.yellow {
-            background-color: yellow;
-            top: 10px;
-            left: 30px;
-        }
-
-        .dot.green {
-            background-color: green;
-            top: 10px;
-            left: 50px;
-        }
-
         .carousel {
+            position: relative;
             margin-top: 20px;
+            overflow: hidden;
+            border-radius: 10px;
+            max-width: 100%;
         }
 
         .carousel-images {
             display: flex;
-            overflow: hidden;
-            position: relative;
+            transition: transform 0.5s ease-in-out;
         }
 
         .carousel-image {
-            min-width: 100%;
-            border-radius: 10px;
-            object-fit: cover;
-            height: 350px;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
         }
 
         h1 {
@@ -111,21 +99,11 @@
             border-radius: 10px;
             margin-top: 20px;
         }
-
-        .music-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="header">
-        </div>
-
         <div class="carousel">
             <div class="carousel-images" id="carousel-images">
                 <!-- Imagens fornecidas pelo usuário -->
@@ -138,6 +116,10 @@
                 <img src="https://i.ibb.co/wdjQPtC/7.jpg" alt="Foto 7" class="carousel-image">
                 <img src="https://i.ibb.co/d4tq6X5/8.jpg" alt="Foto 8" class="carousel-image">
                 <img src="https://i.ibb.co/gJLdr5y/9.jpg" alt="Foto 9" class="carousel-image">
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button" id="prev-btn">❮</button>
+                <button class="carousel-button" id="next-btn">❯</button>
             </div>
         </div>
 
@@ -153,10 +135,6 @@
         </div>
 
         <div class="music-player">
-            <div class="music-controls">
-                <button id="play-button" style="background-color: red; border: none; padding: 10px; border-radius: 5px; color: white;">Play</button>
-                <input type="range" min="0" max="100" value="30" style="border-radius: 5px;">
-            </div>
             <iframe style="border-radius:10px" src="https://open.spotify.com/embed/playlist/4l6FawRf4VPeX3v91pPfqh?utm_source=generator&autoplay=1" width="100%" height="120" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
     </div>
@@ -181,6 +159,26 @@
         };
 
         setInterval(updateTime, 1000);
+
+        // Carrossel
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-image');
+        const totalImages = images.length;
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        });
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            document.getElementById('carousel-images').style.transform = `translateX(${offset}%)`;
+        }
     </script>
 </body>
 
