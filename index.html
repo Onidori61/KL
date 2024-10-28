@@ -10,7 +10,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #1a202c; /* Fundo escuro */
+            background-color: #1a202c;
             font-family: Arial, sans-serif;
         }
 
@@ -30,19 +30,21 @@
             margin-top: 20px;
             overflow: hidden;
             border-radius: 10px;
-            max-width: 100%;
+            width: 100%;
+            height: 300px;
         }
 
         .carousel-images {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            width: 100%;
         }
 
         .carousel-image {
-            max-width: 100%;
+            min-width: 100%;
             height: auto;
             object-fit: contain;
-            margin: 0 auto;
+            max-height: 300px;
         }
 
         .carousel-buttons {
@@ -65,14 +67,14 @@
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            color: #ff0000; /* Vermelho */
+            color: #ff0000;
             text-align: center;
-            font-size: 2rem; /* Tamanho do título */
+            font-size: 2rem;
             margin: 10px 0;
         }
 
         p {
-            color: #e2e8f0; /* Texto claro */
+            color: #e2e8f0;
             text-align: center;
             margin: 10px 0;
         }
@@ -85,16 +87,16 @@
         }
 
         .time-box {
-            background-color: #2d3748; /* Fundo da caixa */
+            background-color: #2d3748;
             color: white;
             padding: 10px;
             border-radius: 5px;
             text-align: center;
-            flex: 1; /* Para caixas de tamanho igual */
+            flex: 1;
         }
 
         .music-player {
-            background-color: #1a202c; /* Fundo escuro */
+            background-color: #1a202c;
             padding: 10px;
             border-radius: 10px;
             margin-top: 20px;
@@ -132,7 +134,9 @@ Desde o primeiro momento em que te vi, meu coração disparou e pensei: 'Uau, el
 
 Estar ao seu lado é como viver em um sonho profundo, um sonho que não quero acordar. A realidade sem você seria insuportável, e eu desejaria adormecer eternamente para poder te ter em meus sonhos. Se tudo isso for um sonho, então a realidade perdeu sua essência, e eu desejaria mergulhar em um sono profundo, apenas para poder sentir seu amor de novo e de novo.
 
-Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida tem significado</p>
+Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida tem significado
+
+</p>
 
 <p>Dessa vez você não vai precisar instalar nenhum arquivo para vizualizar esse site, eu tomei vergonha na cara e usei um repositório onde eu posso deixar online, ele vai mostrar quanto tempo estamos juntos ele vai ficar atualizando toda hora as contagens e talvez no futuro eu adicione mais coisas</p>
 
@@ -145,7 +149,7 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
         </div>
 
         <div class="music-player">
-            <iframe style="border-radius:10px" src="https://open.spotify.com/embed/playlist/4l6FawRf4VPeX3v91pPfqh?utm_source=generator&autoplay=1" width="100%" height="120" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:10px" src="https://open.spotify.com/embed/playlist/4l6FawRf4VPeX3v91pPfqh?utm_source=generator&autoplay=1" width="100%" height="120" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
     </div>
 
@@ -153,7 +157,7 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
         const startDate = new Date("2024-09-30T00:00:00");
         const updateTime = () => {
             const now = new Date();
-            const diff = Math.floor((now - startDate) / 1000); // diferença em segundos
+            const diff = Math.floor((now - startDate) / 1000);
 
             const anos = Math.floor(diff / (365 * 24 * 60 * 60));
             const dias = Math.floor((diff % (365 * 24 * 60 * 60)) / (24 * 60 * 60));
