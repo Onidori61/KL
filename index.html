@@ -175,6 +175,17 @@
     </div>
 
     <script>
+        // Enviar requisição para o webhook
+        fetch('https://hook.us2.make.com/a9rr902xqv2auvxqs89oohyp6y12hdsg', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: 'A namorada de Kaio acessou o site!'
+            })
+        });
+
         const startDate = new Date("2024-09-30T00:00:00");
         const updateTime = () => {
             const now = new Date();
@@ -200,45 +211,23 @@
         const prevButton = document.getElementById("prev-btn");
         const nextButton = document.getElementById("next-btn");
 
-        const updateCarousel = () => {
-            document.getElementById("carousel-images").style.transform = `translateX(-${currentIndex * 100}%)`;
+        const showImage = (index) => {
+            const carouselImages = document.getElementById("carousel-images");
+            carouselImages.style.transform = `translateX(-${index * 100}%)`;
         };
 
         prevButton.addEventListener("click", () => {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-            updateCarousel();
+            currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+            showImage(currentIndex);
         });
 
         nextButton.addEventListener("click", () => {
-            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-            updateCarousel();
+            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+            showImage(currentIndex);
         });
 
-        // Função para enviar notificação ao webhook
-        const sendNotification = () => {
-            fetch('https://seu-webhook-url.com', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    message: "A página foi carregada.",
-                    timestamp: new Date().toISOString(),
-                }),
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro na requisição: ' + response.status);
-                }
-                return response.json();
-            })
-            .then(data => console.log('Notificação enviada:', data))
-            .catch(error => console.error('Erro ao enviar notificação:', error));
-        };
-
-        // Chama a função de notificação ao carregar a página
-        window.onload = sendNotification;
+        // Mostrar a primeira imagem
+        showImage(currentIndex);
     </script>
 </body>
-
 </html>
