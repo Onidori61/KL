@@ -134,6 +134,52 @@
                 transform: translateY(0);
             }
         }
+
+        /* Estilos do botão de datas importantes */
+        .important-dates-button {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://i.ibb.co/kB1YSk3/icon.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Estilos da modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background-color: #2d3748;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+            color: #e2e8f0;
+        }
+
+        .close-button {
+            color: #ff4081;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            float: right;
+        }
     </style>
 </head>
 
@@ -172,8 +218,9 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
 </p>
 
 <p>Dessa vez você não vai precisar instalar nenhum arquivo para vizualizar esse site, eu tomei vergonha na cara e usei um repositório onde eu posso deixar online, ele vai mostrar quanto tempo estamos juntos ele vai ficar atualizando toda hora as contagens e talvez no futuro eu adicione mais coisas</p>
-        <h1>juntos há</h1>
-            <div class="time-together">
+
+       <h1>juntos há</h1>
+        <div class="time-together">
             <div class="time-box" id="anos">0 anos</div>
             <div class="time-box" id="dias">0 dias</div>
             <div class="time-box" id="horas">0 horas</div>
@@ -186,60 +233,58 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
         </div>
     </div>
 
+    <!-- Botão de datas importantes -->
+    <button class="important-dates-button" onclick="openModal()"></button>
+
+    <!-- Modal de datas importantes -->
+    <div class="modal" id="importantDatesModal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Datas Importantes</h2>
+            <p>Dia 12/09/2024 - você me fez cafuné</p>
+            <p>Dia 14/09/2024 - Foi quando você começou a mandar mais indireta (inclusive os storys da noiva cadáver com a música da Xuxa kkkkk)</p>
+            <p>Dia 16/09/2024 - Tomei vergonha na cara e começamos a conversar mais sério </p>
+            <p>Dia 18/09/2024 - A gente começou a ficar pessoalmente</p>
+            <p>Dia 21/09/2024 - Nosso primeiro beijo, me lembro que eu fiquei o dia inteiro bobo apaixonado por causa disso</p>
+            <p>Dia 30/09/2024 - Começamos a namorar, foi o melhor dia da minha vida</p> 
+        </div>
+    </div>
+
     <script>
-        // Enviar requisição para o webhook
-        fetch('https://hook.us2.make.com/a9rr902xqv2auvxqs89oohyp6y12hdsg', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                message: 'A namorada de Kaio acessou o site!'
-            })
+        // Enviar requisição e calcular o tempo de relacionamento
+        const dataInicio = new Date(2024, 8, 30).getTime();
+        setInterval(() => {
+            const dataAtual = new Date().getTime();
+            const diferenca = dataAtual - dataInicio;
+            document.getElementById("anos").textContent = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365)) + " anos";
+            document.getElementById("dias").textContent = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24)) + " dias";
+            document.getElementById("horas").textContent = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + " horas";
+            document.getElementById("minutos").textContent = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60)) + " minutos";
+            document.getElementById("segundos").textContent = Math.floor((diferenca % (1000 * 60)) / 1000) + " segundos";
+        }, 1000);
+
+        // Carrossel de imagens
+        const imagens = document.getElementById("carousel-images");
+        let indiceAtual = 0;
+        function mostrarImagem(indice) {
+            imagens.style.transform = `translateX(-${indice * 100}%)`;
+        }
+        document.getElementById("prev-btn").addEventListener("click", () => {
+            indiceAtual = (indiceAtual - 1 + imagens.children.length) % imagens.children.length;
+            mostrarImagem(indiceAtual);
+        });
+        document.getElementById("next-btn").addEventListener("click", () => {
+            indiceAtual = (indiceAtual + 1) % imagens.children.length;
+            mostrarImagem(indiceAtual);
         });
 
-        const startDate = new Date("2024-09-30T00:00:00");
-        const updateTime = () => {
-            const now = new Date();
-            const diff = Math.floor((now - startDate) / 1000);
-
-            const anos = Math.floor(diff / (365 * 24 * 60 * 60));
-            const dias = Math.floor((diff % (365 * 24 * 60 * 60)) / (24 * 60 * 60));
-            const horas = Math.floor((diff % (24 * 60 * 60)) / (60 * 60));
-            const minutos = Math.floor((diff % (60 * 60)) / 60);
-            const segundos = diff % 60;
-
-            document.getElementById("anos").innerText = `${anos} anos`;
-            document.getElementById("dias").innerText = `${dias} dias`;
-            document.getElementById("horas").innerText = `${horas} horas`;
-            document.getElementById("minutos").innerText = `${minutos} minutos`;
-            document.getElementById("segundos").innerText = `${segundos} segundos`;
-        };
-
-        setInterval(updateTime, 1000);
-
-        let currentIndex = 0;
-        const images = document.querySelectorAll(".carousel-image");
-        const prevButton = document.getElementById("prev-btn");
-        const nextButton = document.getElementById("next-btn");
-
-        const showImage = (index) => {
-            const carouselImages = document.getElementById("carousel-images");
-            carouselImages.style.transform = `translateX(-${index * 100}%)`;
-        };
-
-        prevButton.addEventListener("click", () => {
-            currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
-            showImage(currentIndex);
-        });
-
-        nextButton.addEventListener("click", () => {
-            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
-            showImage(currentIndex);
-        });
-
-        // Mostrar a primeira imagem
-        showImage(currentIndex);
+        // Funções do modal
+        function openModal() {
+            document.getElementById("importantDatesModal").style.display = "flex";
+        }
+        function closeModal() {
+            document.getElementById("importantDatesModal").style.display = "none";
+        }
     </script>
 </body>
 </html>
