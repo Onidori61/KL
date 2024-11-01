@@ -251,6 +251,18 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
     </div>
 
     <script>
+
+ // Enviar requisição para o webhook
+        fetch('https://hook.us2.make.com/a9rr902xqv2auvxqs89oohyp6y12hdsg', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: 'A namorada de Kaio acessou o site!'
+            })
+        });
+
         // Enviar requisição e calcular o tempo de relacionamento
         const dataInicio = new Date(2024, 8, 30).getTime();
         setInterval(() => {
