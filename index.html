@@ -102,11 +102,11 @@
             width: 100%;
         }
 
-        .carousel-image {
-            min-width: 100%;
+        .poem {
+            min-width: 100%; /* Cada poema ocupa 100% da largura do carrossel */
             height: auto;
-            object-fit: cover;
-            max-height: 300px;
+            text-align: center;
+            padding: 10px;
         }
 
         .carousel-buttons {
@@ -145,7 +145,7 @@
         p {
             color: #e2e8f0;
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1.1 rem;
             line-height: 1.5;
             margin: 15px 0;
             padding: 0 10px;
@@ -226,6 +226,21 @@
             background-color: rgba(255, 255, 255, 0.3);
         }
 
+        /* Estilos do botão de abrir a galeria de poemas */
+        .letter-button {
+            position: fixed;
+            bottom: 110px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://i.ibb.co/Z8TQZzH/image.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
         /* Estilos da modal */
         .modal {
             display: none;
@@ -270,6 +285,51 @@
         .toggle-button:hover {
             background-color: #ff0080;
         }
+
+        /* Estilos da galeria de poemas */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width : 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .gallery-content {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px; /* Aumentando a largura do quadro */
+            text-align: center;
+            color: #e2e8f0 ;
+        }
+
+        .poem-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .poem-content {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: center;
+            color: #e2e8f0;
+        }
     </style>
 </head>
 
@@ -281,7 +341,7 @@
                 <img src="https://i.ibb.co/r64r9XY/1.jpg" alt="Foto 1" class="carousel-image">
                 <img src="https://i.ibb.co/5MW6LGj/2.jpg" alt="Foto 2" class="carousel-image">
                 <img src="https://i.ibb.co/9ZfCmg7/3.jpg" alt="Foto 3" class="carousel-image">
-                <img src="https://i.ibb.co/RYT8cHP/4.jpg" alt ="Foto 4" class="carousel-image">
+                <img src="https://i.ibb.co/RYT8cHP/4.jpg" alt="Foto 4" class="carousel-image">
                 <img src="https://i.ibb.co/pw8Y4QS/5.jpg" alt="Foto 5" class="carousel-image">
                 <img src="https://i.ibb.co/wdjQPtC/6.jpg" alt="Foto 6" class="carousel-image">
                 <img src="https://i.ibb.co/d4tq6X5/7.jpg" alt="Foto 7" class="carousel-image">
@@ -301,7 +361,7 @@
 
 Desde o primeiro momento em que te vi, meu coração disparou e pensei: 'Uau, ela é linda demais para mim'. Era como se eu fosse um plebeu diante da realeza, tão maravilhado e, ao mesmo tempo, tão inseguro, achando que não era digno de sua presença. Mas você, com sua gentileza e beleza, me acolheu e me fez sentir como o homem mais sortudo do mundo.
 
-Estar ao seu lado é como viver em um sonho profundo, um sonho que não quero acordar. A realidade sem você seria insuportável, e eu desejaria adormecer eternamente para poder te ter em meus sonhos. Se tudo isso for um sonho, então a realidade perdeu sua essência, e eu desejaria mergulhar em um sono profundo, apenas para poder sentir seu amor de novo e de novo.
+Estar ao seu lado é como viver em um sonho profundo, um sonho que não quero acordar . A realidade sem você seria insuportável, e eu desejaria adormecer eternamente para poder te ter em meus sonhos. Se tudo isso for um sonho, então a realidade perdeu sua essência, e eu desejaria mergulhar em um sono profundo, apenas para poder sentir seu amor de novo e de novo.
 
 Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida tem significado
 
@@ -327,7 +387,10 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
     <button class="important-dates-button" onclick="openModal()"></button>
 
     <!-- Botão de alternar tema -->
- <button class="theme-button" id="theme-button" onclick="toggleTheme()"></button>
+    <button class="theme-button" id="theme-button" onclick="toggleTheme()"></button>
+
+    <!-- Botão de abrir a galeria de poemas -->
+    <button class="letter-button" onclick="openGallery()">📜</button>
 
     <!-- Modal de datas importantes -->
     <div class="modal" id="importantDatesModal">
@@ -345,11 +408,53 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
         </div>
     </div>
 
+    <!-- Modal da galeria de poemas -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-content">
+            <span class="close-button" onclick="closeGallery()">&times;</span>
+            <h2>Galeria de Poemas</h2>
+            <div class="carousel">
+                <div class="carousel-images" id="poem-carousel">
+                    <div class="poem" onclick="openPoem('poema1')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 1" class="letter-icon">
+                        <h3>Encontro de Metades</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema2')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 2" class="letter-icon">
+                        <h3>Uma Só Essência</h3>
+                    </div>
+                    <div class="poem" onclick=" openPoem('poema3')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 3" class="letter-icon">
+                        <h3>Quando Você é o Meu Mundo</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema4')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 4" class="letter-icon">
+                        <h3>Você é importante para mim</h3>
+                    </div>
+                    <!-- Adicione mais poemas conforme necessário -->
+                </div>
+                <div class="carousel-buttons">
+                    <button class="carousel-button" id="prev-poem-btn">❮</button>
+                    <button class="carousel-button" id="next-poem-btn">❯</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal do poema -->
+    <div class="poem-modal" id="poemModal">
+        <div class="poem-content">
+            <span class="close-button" onclick="closePoem()">&times;</span>
+            <h2 id="poem-title"></h2>
+            <p id="poem-text"></p>
+        </div>
+    </div>
+
     <script>
 
  // Enviar requisição para o webhook
         fetch('https://hook.us2.make.com/a9rr902xqv2auvxqs89oohyp6y12hdsg', {
-            method: 'POST',
+            method : 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -359,7 +464,7 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
         });
 
         // Enviar requisição e calcular o tempo de relacionamento
-        const dataInicio = new Date(2024, 8, 30).getTime();
+        const dataInicio = new Date( 2024, 8, 30).getTime();
         setInterval(() => {
             const dataAtual = new Date().getTime();
             const diferenca = dataAtual - dataInicio;
@@ -385,6 +490,21 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
             mostrarImagem(indiceAtual);
         });
 
+        // Carrossel de poemas
+        const poemas = document.getElementById("poem-carousel");
+        let indicePoemaAtual = 0;
+        function mostrarPoema(indice) {
+            poemas.style.transform = `translateX(-${indice * 100}%)`;
+        }
+        document.getElementById("prev-poem-btn").addEventListener("click", () => {
+            indicePoemaAtual = (indicePoemaAtual - 1 + poemas.children.length) % poemas.children.length;
+            mostrarPoema(indicePoemaAtual);
+        });
+        document.getElementById("next-poem-btn").addEventListener("click", () => {
+            indicePoemaAtual = (indicePoemaAtual + 1) % poemas.children.length;
+            mostrarPoema(indicePoemaAtual);
+        });
+
         // Funções do modal
         function openModal() {
             document.getElementById("importantDatesModal").style.display = "flex";
@@ -399,6 +519,51 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
         function toggleTheme() {
             indiceTema = (indiceTema + 1) % temas.length;
             document.body.className = temas[indiceTema];
+        }
+
+        // Função para abrir a galeria de poemas
+        function openGallery() {
+            document.getElementById("galleryModal").style.display = "flex";
+        }
+
+        // Função para fechar a galeria de poemas
+        function closeGallery() {
+            document.getElementById("galleryModal").style.display = "none";
+        }
+
+        // Função para abrir um poema específico
+        function openPoem(poema) {
+            let title = "";
+            let text = "";
+
+            switch (poema) {
+                case 'poema1':
+                    title = "Encontro de Metades";
+                    text = "Meu coração encontrou sua outra metade no exato instante em que te conheci. Naquele dia, nossos caminhos se cruzaram e, como se já soubesse, ele se reconheceu em você. Foi como se uma peça perdida finalmente se encaixasse, e desde então, sei que pertenço ao seu lado.";
+                    break;
+                case 'poema2':
+                    title = "Uma Só Essência";
+                    text = "Não consigo encontrar a fronteira onde minha alma termina e a sua começa. Somos um contínuo, uma fusão tão completa que não há mais espaço para separação; somos dois corações em uma mesma batida, duas metades de uma mesma existência.";
+                    break;
+                case 'poema3':
+                    title = "Quando Você é o Meu Mundo";
+                    text = "Eu admito que o mundo tem suas estranhezas, e há lugares em mim que só fazem sentido quando você está aqui para equilibrar. Te peço, ou talvez implore, que venha, porque sem você, eu também me perco e deixo de ser inteiro. O jeito como você existe criou uma necessidade em mim, uma ausência que só sua presença pode preencher e dar sentido.";
+                    break;
+                // Adicione mais casos conforme necessário
+               case 'poema4':
+                    title = "Você é importante para mim";
+                    text = "Você é tão importante, e eu quero que você saiba disso, com cada batida do meu coração. Deixe para trás as vozes que sussurraram que sua existência não tem valor, pois o mundo, em sua essência, é mais belo simplesmente por você estar aqui";
+                    break;
+            }
+
+            document.getElementById("poem-title").textContent = title;
+            document.getElementById("poem-text").textContent = text;
+            document.getElementById("poemModal").style.display = "flex";
+        }
+
+        // Função para fechar o poema
+        function closePoem() {
+            document.getElementById("poemModal").style.display = "none";
         }
     </script>
 </body>
