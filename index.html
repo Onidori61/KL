@@ -442,6 +442,27 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
                         <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 4" class="letter-icon">
                         <h3>Entre espinhos e devoção</h3>
                     </div>
+
+                    <div class="poem" onclick="openPoem('poema6')">
+    <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 4" class="letter-icon">
+    <h3>Reflexo dos Meus Sentimentos</h3>
+</div>
+
+<div class="poem" onclick="openPoem('poema7')">
+    <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 4" class="letter-icon">
+    <h3>Teu Amor, Meu Lar</h3>
+</div>
+
+<div class="poem" onclick="openPoem('poema8')">
+    <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 4" class="letter-icon">
+    <h3>Toque do Infinito</h3>
+</div>
+
+<div class="poem" onclick="openPoem('poema9')">
+    <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 4" class="letter-icon">
+    <h3>Amor que Arde e Acalma</h3>
+</div>
+
                     <!-- Adicione mais poemas conforme necessário -->
                 </div>
                 <div class="carousel-buttons">
@@ -569,7 +590,58 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
                case 'poema5':
                     title = "Entre espinhos e devoção";
                     text = "Toda rosa tem seus espinhos. Mostre-me os seus, e eu te mostrarei mãos dispostas a sangrar sem hesitar, só para estar ao seu lado. Pois amar você é um privilégio tão raro, que até as dores se tornam preciosas se é por você que elas vêm";
-                    break;
+                    break;            
+             
+              case 'poema6':
+        title = "Reflexo dos Meus Sentimentos";
+        text = "Olho para você e encontro a paz que o mundo nunca me deu, \n\
+seus olhos são como o mar em que escolho me perder. \n\
+Cada detalhe teu guarda um universo que me chama, \n\
+e eu, sem hesitar, me rendo, sou teu, apenas por existir em ti.\n\n\
+Em cada sorriso teu, sinto o peso leve do amor, \n\
+como uma melodia secreta que só nós ouvimos. \n\
+E se o mundo fosse só nós dois, eu saberia, \n\
+pois teu olhar reflete tudo o que um coração pode sentir.";
+        break;
+
+    case 'poema7':
+        title = "Teu Amor, Meu Lar";
+        text = "Te encontro nos cantos mais profundos de mim, \n\
+onde até o silêncio traz tua voz serena. \n\
+Você é a paz que minha alma anseia, \n\
+a calma que acalma e o abrigo que protege.\n\n\
+Se a vida é um mar de incertezas, te amar é a âncora, \n\
+e cada abraço teu, uma promessa de eternidade. \n\
+Se o tempo nos leva um dia, que ao menos saiba, \n\
+meu lar foi ao teu lado, minha vida foi amar você.";
+        break;
+
+    case 'poema8':
+        title = "Toque do Infinito";
+        text = "Teu toque é como a brisa que me desperta, \n\
+suave e intenso, é como renascer. \n\
+Cada vez que sinto a tua pele na minha, \n\
+sinto o infinito se desdobrar, se fazer presente.\n\n\
+Entrelaço meus dedos nos teus, e nada mais importa, \n\
+pois naquele instante, somos tudo o que o amor sonhou. \n\
+Que o mundo pare e o tempo se renda, \n\
+pois aqui, nos teus braços, eu encontro a eternidade.";
+        break;
+
+    case 'poema9':
+        title = "Amor que Arde e Acalma";
+        text = "Teu amor é fogo que me aquece, mas também abrigo, \n\
+como um refúgio silencioso onde posso ser eu. \n\
+Tu és o pulsar que me mantém vivo, o coração que bate forte, \n\
+um mistério que me consome e me faz querer mais.\n\n\
+Por ti, eu sou a chama que não apaga, a coragem sem medo, \n\
+e ao teu lado, não há nada que me falte, sou completo. \n\
+Porque te amar é como ver o sol nascer e se pôr, \n\
+sabendo que, em qualquer amanhecer, tu és meu tudo.";
+        break;
+
+    // Outros cases, se houver
+}
             }
 
             document.getElementById("poem-title").textContent = title;
