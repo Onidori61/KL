@@ -79,16 +79,18 @@ background-size: cover;
             color: #ff1493; /* Texto escuro para contraste */
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-            overflow: hidden;
-            position: relative;
-            animation: fadeIn 1.5s ease;
-        }
+        .container { 
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); 
+    overflow: hidden; 
+    position: relative; 
+    animation: fadeIn 1.5s ease; 
+    background-color: #1f29374d; /* Ajuste para 0.3 ou 0.2 */
+    backdrop-filter: blur(10px); /* Adicionando um efeito de desfoque */
+}
 
         .carousel {
             position: relative;
@@ -117,7 +119,6 @@ background-size: cover;
             min-width: 100%; /* Cada poema ocupa 100% da largura do carrossel */
             height: auto;
             text-align: center;
-            padding: 10px;
         }
 
         .carousel-buttons {
@@ -349,14 +350,14 @@ background-size: cover;
             <div class="carousel-images" id="carousel-images">
                 <!-- Imagens fornecidas pelo usuário -->
                 <img src="https://i.ibb.co/r64r9XY/1.jpg" alt="Foto 1" class="carousel-image">
-                <img src="https://i.ibb.co/5MW6LGj/2.jpg" alt="Foto 2" class="carousel-image">
-                <img src="https://i.ibb.co/9ZfCmg7/3.jpg" alt="Foto 3" class="carousel-image">
-                <img src="https://i.ibb.co/RYT8cHP/4.jpg" alt="Foto 4" class="carousel-image">
-                <img src="https://i.ibb.co/pw8Y4QS/5.jpg" alt="Foto 5" class="carousel-image">
-                <img src="https://i.ibb.co/wdjQPtC/6.jpg" alt="Foto 6" class="carousel-image">
-                <img src="https://i.ibb.co/d4tq6X5/7.jpg" alt="Foto 7" class="carousel-image">
-                <img src="https://i.ibb.co/gJLdr5y/8.jpg" alt="Foto 8" class="carousel-image">
-                <img src="https://i.ibb.co/gJLdr5y/9.jpg" alt="Foto 9" class="carousel-image">
+                <img src="https://i.ibb.co/9ZfCmg7/3.jpg" alt="Foto 2" class="carousel-image">
+                <img src="https://i.ibb.co/h8SZDtj/IMG-20241026-WA0019.jpg" alt="Foto 3" class="carousel-image">
+                <img src="https://i.ibb.co/cbwHsY6/IMG-20241030-WA0015.jpg" alt="Foto 4" class="carousel-image">
+                <img src="https://i.ibb.co/WHXktfs/20241025091334309.jpg" alt="Foto 5" class="carousel-image">
+                <img src="https://i.ibb.co/rvtKq3n/IMG-20241029-WA0012.jpg" alt="Foto 6" class="carousel-image"> 
+                <img src="https://i.ibb.co/PzMHhvX/IMG-20241124-195018932.jpg" alt="Foto 7" class="carousel-image"> 
+                <img src="https://i.ibb.co/t2rNgDX/IMG-20241124-195011923.jpg" alt="Foto 8" class="carousel-image"> 
+                <img src="https://i.ibb.co/vVbRPTk/IMG-20241124-194633471-BURST000-COVER.jpg" alt="Foto 9" class="carousel-image"> 
             </div>
             <div class="carousel-buttons">
                 <button class="carousel-button" id="prev-btn">❮</button>
@@ -373,13 +374,8 @@ Desde o primeiro momento em que te vi, meu coração disparou e pensei: 'Uau, el
 
 Estar ao seu lado é como viver em um sonho profundo, um sonho que não quero acordar . A realidade sem você seria insuportável, e eu desejaria adormecer eternamente para poder te ter em meus sonhos. Se tudo isso for um sonho, então a realidade perdeu sua essência, e eu desejaria mergulhar em um sono profundo, apenas para poder sentir seu amor de novo e de novo.
 
-Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida tem significado
-
-</p>
-
-<p>Dessa vez você não vai precisar instalar nenhum arquivo para vizualizar esse site, eu tomei vergonha na cara e usei um repositório onde eu posso deixar online, ele vai mostrar quanto tempo estamos juntos ele vai ficar atualizando toda hora as contagens e talvez no futuro eu adicione mais coisas</p>
-
-       <h1>juntos há</h1>
+Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida tem significado</p>
+<h1 id="redirect-button" style="cursor: pointer;">juntos há</h1>
         <div class="time-together">
             <div class="time-box" id="anos">0 anos</div>
             <div class="time-box" id="dias">0 dias</div>
@@ -487,6 +483,7 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
 
     <script>
 
+        
  // Enviar requisição para o webhook
         fetch('https://hook.us2.make.com/a9rr902xqv2auvxqs89oohyp6y12hdsg', {
             method : 'POST',
@@ -631,5 +628,12 @@ Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida
             document.getElementById("poemModal").style.display = "none";
         }
     </script>
+
+<script>
+    document.getElementById("redirect-button").addEventListener("click", function() {
+        window.location.href = "https://cards-wine-six.vercel.app";
+    });
+</script>
+
 </body>
 </html>
