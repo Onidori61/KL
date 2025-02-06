@@ -49,7 +49,7 @@ function closeModal() {
 
 ### **3 • Mudança de Tema**
 
- = Só tem 3 temas, Normal, Dark e Neon
+ -  Só tem 3 temas, Normal, Dark e Neon
 
  - Como Funciona:
  - Definição dos Temas no CSS: Cada tema é definido por classes CSS específicas que alteram as propriedades de estilo da página. Aqui estão os exemplos de como os temas são configurados:_
