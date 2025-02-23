@@ -205,11 +205,6 @@ background-size: cover;
             }
         }
 
-        <div id="imageModal" class="image-modal">
-    <span class="close-button" onclick="closeImageModal()">&times;</span>
-    <img id="modalImage" src="" alt="Imagem">
-</div>
-
         /* Estilos do botão de datas importantes */
         .important-dates-button {
             position: fixed;
@@ -354,27 +349,6 @@ background-size: cover;
      scrollbar-width: none;
      cursor: url('./assets/js/cursor.gif'), pointer !important; 
      }
-
-        /* Estilos para o modal de imagem em tela cheia */
-.image-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.image-modal img {
-    max-width: 90%;
-    max-height: 90%;
-    border: 2px solid white;
-    border-radius: 10px;
-}
         
     </style>
 
@@ -875,27 +849,6 @@ background-size: cover;
             document.getElementById("poemModal").style.display = "none";
         }
     </script>
-
-    <script>
-    // Função para abrir o modal de imagem em tela cheia
-    function openImageModal(src) {
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        modalImage.src = src;
-        modal.style.display = 'flex';
-    }
-
-    // Função para fechar o modal de imagem em tela cheia
-    function closeImageModal() {
-        const modal = document.getElementById('imageModal');
-        modal.style.display = 'none';
-    }
-
-    // Adicionar evento de clique a todas as imagens do carrossel
-    document.querySelectorAll('.carousel-image').forEach(image => {
-        image.addEventListener('click', () => openImageModal(image.src));
-    });
-</script>
 
 <script>
     document.getElementById("redirect-button").addEventListener("click", function() {
