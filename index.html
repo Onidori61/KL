@@ -519,6 +519,7 @@ background-size: cover;
 <h1 id="redirect-button" style="cursor: pointer;">juntos há</h1>
         <div class="time-together">
             <div class="time-box" id="anos">0 anos</div>
+            <div class="time-box" id="meses">0 meses</div>
             <div class="time-box" id="dias">0 dias</div>
             <div class="time-box" id="horas">0 horas</div>
             <div class="time-box" id="minutos">0 minutos</div>
@@ -682,6 +683,7 @@ background-size: cover;
             const dataAtual = new Date().getTime();
             const diferenca = dataAtual - dataInicio;
             document.getElementById("anos").textContent = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365)) + " anos";
+            document.getElementById("meses").textContent = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)) + " meses";
             document.getElementById("dias").textContent = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24)) + " dias";
             document.getElementById("horas").textContent = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + " horas";
             document.getElementById("minutos").textContent = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60)) + " minutos";
