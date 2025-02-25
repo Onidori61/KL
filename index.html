@@ -1113,9 +1113,9 @@ background-size: cover;
     </script>
 
 <script>
-     function isLastDayOfMonth(date) {
-        const nextDay = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
-        return nextDay.getDate() === 1;
+     function isRomanticDay(date) {
+    const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    return date.getDate() === lastDayOfMonth;
     }
 
     function applyRomanticTheme() {
