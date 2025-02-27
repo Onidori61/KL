@@ -1,0 +1,1081 @@
+<!DOCTYPE html>  
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.ibb.co/Rp2PxLjQ/image.png" type="image/x-icon">
+    <title>Kaio e Lohana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:wght@400&display=swap" rel="stylesheet">
+    <style>
+
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lora', serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Estilos para a paleta normal */
+        .normal {
+            background: url("https://i.ibb.co/HV7kdTd/image.png") no-repeat center center fixed;
+            background-size: cover;
+            color: #e2e8f0;
+        }
+
+        .normal .container {
+            background-color: #ff94ab70;
+
+        }
+
+        .normal .time-box {
+            background: url('https://i.ibb.co/3qYY2yk/image.png') no-repeat center center;
+            color: rgb(0, 0, 0);
+        }
+
+        .normal .modal-content {
+            background-color: #482d478a;
+            color: #e2e8f0;
+        }
+
+        /* Estilos para a paleta escura */
+        .dark {
+            background: url("https://i.ibb.co/zRZ58YB/56c2555db18c976b4dddfe331e1e8a6f.png") no-repeat center center fixed;
+background-size: cover;
+
+            color: #ffffff;
+        }
+
+        .dark .container {
+            background-color: #00000069;
+        }
+
+        .dark .time-box {
+            background: url('https://i.ibb.co/tTQy3kdq/image.png') no-repeat center center;
+            color: #ffffff;
+        }
+
+        .dark .modal-content {
+            background-color: #3853ff1f; /* Cor mais clara para o tema escuro */
+            color: #ffffff;
+        }
+
+        /* Estilos para a paleta neon */
+        .neon {
+            background: url("https://i.ibb.co/rfqCWXd/banner.png") no-repeat center center fixed;
+background-size: cover;
+            color: #ffffff;
+        }
+
+        .neon .container {
+            background-color: #5501396c;
+            box-shadow: 0 0 8px rgba(255, 20, 147, 0.7); 
+        }
+
+        .neon .time-box {
+            background: url('https://i.ibb.co/gM667HJd/image.png') no-repeat center center;
+            color: #bb91ff; /* Rosa neon */
+        }
+
+        .neon .modal-content {
+            background-color: #5a005d59; /* Cor neon para o tema neon */
+            color: #f8108c; /* Texto escuro para contraste */
+            box-shadow: 1px 1px 20px 7px rgb(181 8 152 / 50%); /* sombra para o modal */
+        }
+
+        .container { 
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); 
+    overflow: hidden; 
+    position: relative; 
+    animation: fadeIn 1.5s ease; 
+    background-color: #1f29374d; /* Ajuste para 0.3 ou 0.2 */
+    backdrop-filter: blur(10px); /* Adicionando um efeito de desfoque */
+}
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .carousel-image {
+            min-width: 100%; /* Cada imagem ocupa 100% da largura do carrossel */
+            height: auto; /* Mantém a altura automática */
+            object-fit: cover; /* Cobre o espaço mantendo a proporção */
+            max-height: 300px; /* Limita a altura máxima */
+        }
+
+        .poem {
+            min-width: 100%; /* Cada poema ocupa 100% da largura do carrossel */
+            height: auto;
+            text-align: center;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white ;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #1a202c;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff4081;
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 15px 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            color: #e2e8f0;
+            text-align: center;
+            font-size: 1.1 rem;
+            line-height: 1.5;
+            margin: 15px 0;
+            padding: 0 10px;
+        }
+
+        .time-together {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+            transition: transform 0.2s;
+        }
+
+        .time-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        }
+
+        .music-player {
+            background-color: #2a2a2a;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilos do botão de datas importantes */
+        .important-dates-button {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://i.ibb.co/kB1YSk3/icon.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Estilos do botão de alternar tema */
+        .theme-button {
+            position: fixed;
+            bottom: 60px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://i.ibb.co/fF92C2h/icon-theme.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .theme-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Estilos do botão de abrir a galeria de poemas */
+        .letter-button {
+            position: fixed;
+            bottom: 110px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://i.ibb.co/Z8TQZzH/image.png'); background-size: contain;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Estilos da modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+            color: #e2e8f0;
+        }
+
+        .close-button {
+            color: #ff4081;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            float: right;
+        }
+
+        .toggle-button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-button:hover {
+            background-color: #ff0080;
+        }
+
+        /* Estilos da galeria de poemas */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width : 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .gallery-content {
+            background-color: #e999ff2b;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px; /* Aumentando a largura do quadro */
+            text-align: center;
+            color: #8f417a ;
+        }
+
+        .poem-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .poem-content {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: center;
+            color: #e2e8f0;
+        }
+
+         /*teste para cursor e etc */
+
+     * {
+     scrollbar-width: none;
+     cursor: url('./assets/js/cursor.gif'), pointer !important; 
+     }
+        
+    </style>
+
+    <style>
+
+    /*imagens no fundo das time box*/
+   
+    #anos✦ {
+    background: url('https://i.ibb.co/PG1BXfLW/image.png') no-repeat center center;
+    background-size: cover;
+    color: #404042; /* Ajuste a cor do texto se necessário */
+}
+
+.time-box:not(#✦meses) {
+    display: none;
+}
+
+/* Estilos para o time box de meses */
+ 
+
+#dias {
+    background: url('https://i.ibb.co/p8QKbxt/image.png') no-repeat center center;
+    background-size: cover;
+    color: #000000;
+}
+
+#horas {
+    background: url('https://i.ibb.co/BJN3fVm/image.png') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+}
+
+#minutos {
+    background: url('https://i.ibb.co/zWHdMRmF/image.png') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+}
+
+#segundos {
+    background: url('https://i.ibb.co/21SmX3wM/image.png') no-repeat center center;
+    background-size: cover;
+    color: #ffd2d2;
+
+    
+}
+
+@media (min-width: 780px) {
+    #segundos {
+        background: url('https://i.ibb.co/mKZ5f09/image.png') no-repeat center center;
+        background-size: cover;
+    }
+}
+        
+    /* Desativar destaque azul ao clicar em elementos no celular */
+    * {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+
+    /* Outros estilos existentes... */
+</style>
+
+</head>
+
+<body class="normal">
+    <div class="container">
+        <div class="carousel">
+            <div class="carousel-images" id="carousel-images">
+                <!-- Imagens fornecidas pelo usuário -->
+ <img src="https://i.ibb.co/bJmm44D/IMG-20241124-194722665.jpg" alt="Foto 1" class="carousel-image">
+<img src="https://i.ibb.co/CzBv4g7/IMG-20241124-194721794.jpg" alt="Foto 2" class="carousel-image">
+<img src="https://i.ibb.co/BgvdPh0/IMG-20241124-194633471-BURST000-COVER.jpg" alt="Foto 3" class="carousel-image">
+<img src="https://i.ibb.co/HpvvD7w/IMG-20241124-194630783.jpg" alt="Foto 4" class="carousel-image">
+<img src="https://i.ibb.co/mGd12zM/d40170aa-e68b-4b75-b7b2-e20ced3e4e3e.jpg" alt="Foto 5" class="carousel-image">
+<img src="https://i.ibb.co/KDY69j5/20241204093017203.jpg" alt="Foto 6" class="carousel-image">
+<img src="https://i.ibb.co/7vn92y2/20241025091334309.jpg" alt="Foto 7" class="carousel-image">
+<img src="https://i.ibb.co/McGVBh1/60653080013f8a39913e9a9f41fc1387.jpg" alt="Foto 8" class="carousel-image">
+<img src="https://i.ibb.co/q5KfXhP/9794fff9-b292-4899-9882-ee04cc419397.jpg" alt="Foto 9" class="carousel-image">
+<img src="https://i.ibb.co/xYpPSs0/78da4969-3d3b-4e9e-9f40-9431485ecc83.jpg" alt="Foto 10" class="carousel-image">
+<img src="https://i.ibb.co/xfV5qfP/Te-amo-jpg.jpg" alt="Foto 11" class="carousel-image">
+<img src="https://i.ibb.co/mRh4NW7/Snapchat-2081451353.jpg" alt="Foto 12" class="carousel-image">
+<img src="https://i.ibb.co/pKjK7G5/Snapchat-1449374139.jpg" alt="Foto 13" class="carousel-image">
+<img src="https://i.ibb.co/rtVN8mR/Snapchat-1332706890.jpg" alt="Foto 14" class="carousel-image">
+<img src="https://i.ibb.co/r3k19dW/Snapchat-1304830598.jpg" alt="Foto 15" class="carousel-image">
+<img src="https://i.ibb.co/MnLGkKH/Snapchat-1008368245.jpg" alt="Foto 16" class="carousel-image">
+<img src="https://i.ibb.co/ZhKnyS1/Snapchat-94398546.jpg" alt="Foto 17" class="carousel-image">
+<img src="https://i.ibb.co/YWfLt7P/Screenshot-20250118-172533.png" alt="Foto 18" class="carousel-image">
+<img src="https://i.ibb.co/nCM1Rx8/Screenshot-20241217-210603.png" alt="Foto 19" class="carousel-image">
+<img src="https://i.ibb.co/yhCsWp9/Screenshot-20241217-210600.png" alt="Foto 20" class="carousel-image">
+<img src="https://i.ibb.co/HPHhfDf/Screenshot-20241217-210558.png" alt="Foto 21" class="carousel-image">
+<img src="https://i.ibb.co/42Z9sBb/Screenshot-20241217-210556.png" alt="Foto 22" class="carousel-image">
+<img src="https://i.ibb.co/5jw66T3/Screenshot-20241217-210554.png" alt="Foto 23" class="carousel-image">
+<img src="https://i.ibb.co/9sYrN02/Screenshot-20241217-210552.png" alt="Foto 24" class="carousel-image">
+<img src="https://i.ibb.co/LJLqpmF/Screenshot-20241217-174557.png" alt="Foto 25" class="carousel-image">
+<img src="https://i.ibb.co/QXSdgV5/Screenshot-202 41217-174553.png" alt="Foto 26" class="carousel-image">
+<img src="https://i.ibb.co/1q7ydBL/Screenshot-20241217-174312.png" alt="Foto 27" class="carousel-image">
+<img src="https://i.ibb.co/2nB6qgd/retouch-2025010218052045.jpg" alt="Foto 28" class="carousel-image">
+<img src="https://i.ibb.co/gDGMNqd/retouch-2025010217524895.jpg" alt="Foto 29" class="carousel-image">
+<img src="https://i.ibb.co/VQyGHtF/retouch-2025010217523403.jpg" alt="Foto 30" class="carousel-image">
+<img src="https://i.ibb.co/xhKkBm9/IMG-20250118-WA00252.jpg" alt="Foto 31" class="carousel-image">
+<img src="https://i.ibb.co/7JchTQJ/IMG-20250118-WA0036.jpg" alt="Foto 33" class="carousel-image">
+<img src="https://i.ibb.co/8MRf9fZ/IMG-20250118-WA0035.jpg" alt="Foto 34" class="carousel-image">
+<img src="https://i.ibb.co/HrpDmXq/IMG-20250118-WA0034.jpg" alt="Foto 35" class="carousel-image">
+<img src="https://i.ibb.co/YWSfkss/IMG-20250118-WA0033.jpg" alt="Foto 36" class="carousel-image">
+<img src="https://i.ibb.co/cDxhMzh/IMG-20250118-WA0032.jpg" alt="Foto 37" class="carousel-image">
+<img src="https://i.ibb.co/3MFs6G0/IMG-20250118-WA0031.jpg" alt="Foto 38" class="carousel-image">
+<img src="https://i.ibb.co/S08t1yQ/IMG-20250118-WA0030.jpg" alt="Foto 39" class="carousel-image">
+<img src="https://i.ibb.co/bJPMShQ/IMG-20250118-WA0029.jpg" alt="Foto 40" class="carousel-image">
+<img src="https://i.ibb.co/zRGmrmZ/IMG-20250118-WA0028.jpg" alt="Foto 41" class="carousel-image">
+<img src="https://i.ibb.co/wC7Jg4y/IMG-20250118-WA0027.jpg" alt="Foto 42" class="carousel-image">
+<img src="https://i.ibb.co/qgqsJ1z/IMG-20250118-WA0026.jpg" alt="Foto 43" class="carousel-image">
+<img src="https://i.ibb.co/rFj7Kg8/IMG-20250118-WA0025.jpg" alt="Foto 44" class="carousel-image">
+<img src="https://i.ibb.co/xXrMFts/IMG-20250118-WA0024.jpg" alt="Foto 45" class="carousel-image">
+<img src="https://i.ibb.co/LZs5Gqn/IMG-20250118-WA0023.jpg" alt="Foto 46" class="carousel-image">
+<img src="https://i.ibb.co/ggHzP6M/IMG-20250118-WA0022.jpg" alt="Foto 47" class="carousel-image">
+<img src="https://i.ibb.co/kKx2tSM/IMG-20250118-WA0021.jpg" alt="Foto 48" class="carousel-image">
+<img src="https://i.ibb.co/QNN10cP/IMG-20250118-WA0000.jpg" alt="Foto 49" class="carousel-image">
+<img src="https://i.ibb.co/7knHVW9/IMG-20250116-WA0002.jpg" alt="Foto 50" class="carousel-image">
+<img src="https://i.ibb.co/3fyG1NW/IMG-20250107-WA0011.jpg" alt="Foto 51" class="carousel-image">
+<img src="https://i.ibb.co/pyGTvB8/IMG-20241229-WA0048.jpg" alt="Foto 52" class="carousel-image">
+<img src="https://i.ibb.co/3WkHFTg/IMG-20241229-WA 0047.jpg" alt="Foto 53" class="carousel-image">
+<img src="https://i.ibb.co/pRSZ4g7/IMG-20241229-WA0046.jpg" alt="Foto 54" class="carousel-image">
+<img src="https://i.ibb.co/Ldh7nT3/IMG-20241229-WA0030.jpg" alt="Foto 55" class="carousel-image">
+<img src="https://i.ibb.co/cbrW72L/IMG-20241228-WA0028.jpg" alt="Foto 56" class="carousel-image">
+<img src="https://i.ibb.co/YbZ2V87/IMG-20241228-WA0026.jpg" alt="Foto 57" class="carousel-image">
+<img src="https://i.ibb.co/mNHMPx0/IMG-20241221-WA0016.jpg" alt="Foto 58" class="carousel-image">
+<img src="https://i.ibb.co/YQndJMH/IMG-20241221-WA0015.jpg" alt="Foto 59" class="carousel-image">
+<img src="https://i.ibb.co/Gp2Nz7p/IMG-20241220-WA0045.jpg" alt="Foto 60" class="carousel-image">
+<img src="https://i.ibb.co/WcDzcZL/IMG-20241220-WA0044.jpg" alt="Foto 61" class="carousel-image">
+<img src="https://i.ibb.co/hYZ0bh5/IMG-20241220-WA0043.jpg" alt="Foto 62" class="carousel-image">
+<img src="https://i.ibb.co/ccbLwnD/IMG-20241220-WA0042.jpg" alt="Foto 63" class="carousel-image">
+<img src="https://i.ibb.co/nDzJMq1/IMG-20241220-WA0039.jpg" alt="Foto 64" class="carousel-image">
+<img src="https://i.ibb.co/1MP2Yxn/IMG-20241220-WA0038.jpg" alt="Foto 65" class="carousel-image">
+<img src="https://i.ibb.co/MD6YYdx/IMG-20241220-WA0035.jpg" alt="Foto 66" class="carousel-image">
+<img src="https://i.ibb.co/41fXbVW/IMG-20241220-WA0034.jpg" alt="Foto 67" class="carousel-image">
+<img src="https://i.ibb.co/xmDwsSm/IMG-20241217-WA0032.jpg" alt="Foto 68" class="carousel-image">
+<img src="https://i.ibb.co/SPThCfZ/IMG-20241217-WA0024.jpg" alt="Foto 69" class="carousel-image">
+<img src="https://i.ibb.co/z5g4YJW/IMG-20241215-WA0029.jpg" alt="Foto 70" class="carousel-image">
+<img src="https://i.ibb.co/hX2X5Mv/IMG-20241211-WA0014.jpg" alt="Foto 71" class="carousel-image">
+<img src="https://i.ibb.co/RCt9kj2/IMG-20241211-WA0013.jpg" alt="Foto 72" class="carousel-image">
+<img src="https://i.ibb.co/BG9NgD5/IMG-20241210-WA0000.jpg" alt="Foto 73" class="carousel-image">
+<img src="https://i.ibb.co/Ns2qvtr/IMG-20241210-WA0001.jpg" alt="Foto 74" class="carousel-image">
+<img src="https://i.ibb.co/9qz1dgK/IMG-20241209-WA0011.jpg" alt="Foto 75" class="carousel-image">
+<img src="https://i.ibb.co/VvCgddN/IMG-20241209-WA0010.jpg" alt="Foto 76" class="carousel-image">
+<img src="https://i.ibb.co/cLdbR7r/IMG-20241209-WA0009.jpg" alt="Foto 77" class="carousel-image">
+<img src="https://i.ibb.co/yXk6ykW/IMG-20241209-WA0008.jpg" alt="Foto 78" class="carousel-image">
+<img src="https://i.ibb.co/dBMLHMy/IMG-20241208-WA0027.jpg" alt="Foto 79" class="carousel-image">
+<img src="https://i.ibb.co/0Cqt5Sr/IMG-20241208-WA0026.jpg" alt="Foto 80" class="carousel-image">
+<img src="https://i.ibb.co/z4Zx75c/IMG-20241208-WA0025.jpg" alt="Foto 81" class="carousel-image">
+<img src="https://i.ibb.co/Kst7FF1/IMG-20241130-WA0007.jpg" alt="Foto 82" class="carousel-image">
+<img src="https://i.ibb.co/w4R2DW0/IMG-20241130-WA0006.jpg" alt="Foto 83" class="carousel-image">
+<img src="https://i.ibb.co/x8RhXbn/IMG-20241130-WA0005.jpg" alt="Foto 84" class="carousel-image">
+<img src="https://i.ibb.co/8PdCnV9/IMG-20241130-WA0004.jpg" alt="Foto 85" class="carousel-image">
+<img src="https://i.ibb.co/N9Nt6rM/IMG-20241130-WA0002.jpg" alt="Foto 86" class="carousel-image">
+<img src="https://i.ibb.co/Qc8cPnk/IMG-20241129-WA0003.jpg" alt="Foto 87" class="carousel-image">
+<img src="https://i.ibb.co/7J93Fw0/IMG-20241120-WA0009.jpg" alt="Foto 88" class="carousel-image">
+<img src="https://i.ibb.co/VHqKWzP/IMG-20241120-WA0007.jpg" alt="Foto 89" class="carousel-image">
+<img src="https://i.ibb.co/v1ZXr8Z/IMG-20241120-WA0006.jpg" alt="Foto 90" class="carousel-image">
+<img src="https://i.ibb.co/QXGbMf0/IMG-20241113-WA0041.jpg" alt="Foto 91" class="carousel-image">
+<img src="https://i.ibb.co/SPvwbnh/IMG-20241101-WA0016.jpg" alt="Foto 92" class="carousel-image">
+<img src="https://i.ibb.co/ky1zbPQ/IMG-20241108-WA0027.jpg" alt="Foto 93" class="carousel-image">
+<img src="https://i.ibb.co/YfBDyYb/IMG-20241031-WA0030.jpg" alt="Foto 94" class="carousel-image">
+<img src="https://i.ibb.co/dQR26Yn/IMG-20241031-WA0027.jpg" alt="Foto 95" class="carousel-image">
+<img src="https://i.ibb.co/gSXhgJQ/IMG-20241030-WA0015.jpg" alt="Foto 96" class="carousel-image">
+<img src="https://i.ibb.co/CmVqJg0/IMG-20241029-WA0012.jpg" alt="Foto 97" class="carousel-image">
+<img src="https://i.ibb.co/2kb10D0/IMG-20241026-WA0019.jpg" alt="Foto 98" class="carousel-image">
+<img src="https://i.ibb.co/dGKVzCV/IMG-20250112-124008756-HDR.jpg" alt="Foto 99" class="carousel-image">
+<img src="https://i.ibb.co/9HWVGV2/IMG-20250112-123953030-HDR.jpg" alt="Foto 100" class="carousel-image">
+<img src="https://i.ibb.co/p1Krpq4/IMG-20250101-145255644-HDR.jpg" alt="Foto 101" class="carousel-image">
+<img src="https://i.ibb.co/4KcMwjB/IMG-20250101-145244308-HDR.jpg" alt="Foto 102" class="carousel-image">
+<img src="https://i.ibb.co/HT8VVFQ/IMG-20250101-145241221-HDR.jpg" alt="Foto 103" class="carousel-image">
+<img src="https://i.ibb.co/LPd3pzS/IMG-20250101-145233624-HDR.jpg" alt="Foto 104" class="carousel-image">
+<img src="https://i.ibb.co/JBVM0kv/IMG-20250101-022043086.jpg" alt="Foto 105" class="carousel-image">
+<img src="https://i.ibb.co/0rGWNSw/IMG-20250101-022035152.jpg" alt="Foto 106" class="carousel-image">
+<img src="https://i.ibb.co/G0Tp8Db/IMG-20250101-022025190.jpg" alt="Foto  107" class="carousel-image">
+<img src="https://i.ibb.co/yFd8ynv/IMG-20250101-021959918.jpg" alt="Foto 108" class="carousel-image">
+<img src="https://i.ibb.co/VCM8Q4W/IMG-20250101-021951881.jpg" alt="Foto 109" class="carousel-image">
+<img src="https://i.ibb.co/48Qcv5B/IMG-20250101-021945978.jpg" alt="Foto 110" class="carousel-image">
+<img src="https://i.ibb.co/jG87JF8/IMG-20241230-123332-298.webp" alt="Foto 111" class="carousel-image">
+<img src="https://i.ibb.co/YQvCS9z/IMG-20241230-123317-587.webp" alt="Foto 112" class="carousel-image">
+<img src="https://i.ibb.co/fpQrcVd/IMG-20241225-211059373.jpg" alt="Foto 113" class="carousel-image">
+<img src="https://i.ibb.co/wsp98Zx/IMG-20241225-211058735.jpg" alt="Foto 114" class="carousel-image">
+<img src="https://i.ibb.co/KsdShbh/IMG-20241225-211056868.jpg" alt="Foto 115" class="carousel-image">
+<img src="https://i.ibb.co/z2GBz1v/IMG-20241203-113747408.jpg" alt="Foto 116" class="carousel-image">
+<img src="https://i.ibb.co/yXnNZ0T/IMG-20241130-193852456-MP.jpg" alt="Foto 117" class="carousel-image">
+<img src="https://i.ibb.co/0nxmZy0/IMG-20241130-193815280.jpg" alt="Foto 118" class="carousel-image">
+<img src="https://i.ibb.co/QvGjnR1/IMG-20241130-193806357.jpg" alt="Foto 119" class="carousel-image">
+<img src="https://i.ibb.co/sy1ybX6/IMG-20241130-193802055.jpg" alt="Foto 120" class="carousel-image">
+<img src="https://i.ibb.co/G22dSTP/IMG-20241130-193748873-HDR.jpg" alt="Foto 121" class="carousel-image">
+<img src="https://i.ibb.co/DQGVDts/IMG-20241130-193745094-HDR.jpg" alt="Foto 122" class="carousel-image">
+<img src="https://i.ibb.co/T25xTw7/IMG-20241130-193627101.jpg" alt="Foto 123" class="carousel-image">
+<img src="https://i.ibb.co/89VHHfN/IMG-20241130-193600670.jpg" alt="Foto 124" class="carousel-image">
+<img src="https://i.ibb.co/2kH8Jkf/IMG-20241124-195518638.jpg" alt="Foto 125" class="carousel-image">
+<img src="https://i.ibb.co/PC0H4nj/IMG-20241124-195453271.jpg" alt="Foto 126" class="carousel-image">
+<img src="https://i.ibb.co/Yp1kYjR/IMG-20241124-195443186.jpg" alt="Foto 127" class="carousel-image">
+<img src="https://i.ibb.co/mXNZZ4Y/IMG-20241124-195441677.jpg" alt="Foto 128" class="carousel-image">
+<img src="https://i.ibb.co/s2RTtfY/IMG-20241124-195156924.jpg" alt="Foto 129" class="carousel-image">
+<img src="https://i.ibb.co/yW5gTkS/IMG-20241124-195146493.jpg" alt="Foto 130" class="carousel-image">
+<img src="https://i.ibb.co/w4HbXW9/IMG-20241124-195137393.jpg" alt="Foto 131" class="carousel-image">
+<img src="https://i.ibb.co/9bfVXLQ/IMG-20241124-195047882.jpg" alt="Foto 132" class="carousel-image">
+<img src="https://i.ibb.co/rQXJ27B/IMG-20241124-195042022.jpg" alt="Foto 133" class="carousel-image">
+<img src="https://i.ibb.co/WzxQTMQ/IMG-20241124-195035778.jpg" alt="Foto 134" class="carousel-image">
+<img src="https://i.ibb.co/TTQXRz4/IMG-20241124-195029412.jpg" alt="Foto 135" class="carousel-image">
+<img src="https://i.ibb.co/HH0z730/IMG-20241124-195028783.jpg" alt="Foto 136" class="carousel-image">
+<img src="https://i.ibb.co/GcVDnLd/IMG-20241124-195022198.jpg" alt="Foto 137" class="carousel-image">
+<img src="https://i.ibb.co/QJRtXzN/IMG-20241124-195018932.jpg" alt="Foto 138" class="carousel-image">
+<img src="https://i.ibb.co/fDWcDDT/IMG-20241124-195011923.jpg" alt="Foto 139" class="carousel-image">
+<img src="https://i.ibb.co/4d8K97G/IMG-20241124-194852914.jpg" alt="Foto 140" class="carousel-image"> 
+            </div>
+            <div class="carousel-buttons">
+              <button class="carousel-button" id="prev-btn" style="background-image: url('https://i.ibb.co/xSgDyzhW/image-1.png'); background-size: cover;"></button>
+              <button class="carousel-button" id="next-btn" style="background-image: url('https://i.ibb.co/mFgzgrJC/image.png'); background-size: cover;"></button>
+            </div>
+        </div>
+
+        <h1>Mai um mês me aturando kakakakak</h1>
+        <p>Mais um mês, e ainda me pego admirado, quem diria, né? Eu te olho e, de repente, tudo ao redor perde o sentido, porque a única verdade que importa está no brilho dos teus olhos. Mas que ironia… esse brilho que me cega é o mesmo que me guia. Nunca senti nada assim, e mesmo depois de tantos dias, estar contigo continua sendo um sentimento novo, vivo, pulsante. Como se, a cada amanhecer, meu coração aprendesse um novo jeito de te ama. Você molda minha vida com a delicadeza de quem transforma o comum em extraordinário. Fez nascer em mim sonhos que eu sequer sabia desejar, me deu uma nova forma de enxergar o mundo, uma visão que jamais teria sozinho. Amar você não é só um sentimento, é um despertar constante, um renascer diário. Você é meu antes, meu agora e tudo o que quero para o depois. Eu te amo, não só pelo que você é, mas pelo que me tornou: alguém que encontrou no teu amor o seu verdadeiro lar.</p>
+<h1 id="redirect-button" style="cursor: pointer;">Feliz mêsversário!!!!!</h1>
+        <div class="time-together">
+            <div class="time-box" id="anos✦">0 anos✦</div>
+            <div class="time-box" id="✦meses">✦ 0 meses</div>
+            <div class="time-box" id="dias">0 dias</div>
+            <div class="time-box" id="horas">0 horas</div>
+            <div class="time-box" id="minutos">0 minutos</div>
+            <div class="time-box" id="segundos">0 segundos</div>
+        </div>
+
+        <div class="music-player">
+            <iframe style="border-radius:17px" src="https://open.spotify.com/embed/track/5lLKJdDPy7qbsta6d88lKE?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Botão de datas importantes -->
+    <button class="important-dates-button" onclick="openModal()"></button>
+
+    <!-- Botão de alternar tema -->
+    <button class="theme-button" id="theme-button" onclick="toggleTheme()"></button>
+
+    <!-- Botão de abrir a galeria de poemas -->
+    <button class="letter-button" onclick="openGallery()">📜</button>
+
+    <!-- Modal de datas importantes -->
+    <div class="modal" id="importantDatesModal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Datas Importantes</h2>
+            <ul>
+                <li><p>Dia 12/09/2024 - você me fez cafuné</p></li>
+                <li><p>Dia 14/09/2024 - Foi quando você começou a mandar mais indireta (inclusive os storys da noiva cadáver com a música da Xuxa kkkkk)</p></li>
+                <li><p>Dia 16/09/2024 - Tomei vergonha na cara e começamos a conversar mais sério </p></li>
+                <li><p>Dia 18/09/2024 - A gente começou a ficar pessoalmente</p></li>
+                <li><p>Dia 21/09/2024 - Nosso primeiro beijo, me lembro que eu fiquei o dia inteiro bobo apaixonado por causa disso</p></li>
+                <li><p>Dia 30/09/2024 - Começamos a namorar, foi o melhor dia da minha vida</p></li>
+                <li><p>Dia <a href="https://metflixe.vercel.app" style="color: inherit; text-decoration: none;">27</a>/10/2024 - Aquele Domingo... foi a melhor sensação do mundo, inclusive, nunca vou esquecer</p></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal da galeria de poemas -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-content">
+            <span class="close-button" onclick="closeGallery()">&times;</span>
+            <h2>Galeria de Poema<a href="https://drive.google.com/drive/folders/1JkDhPJ6J2KPy2J14DIQ9aKBMXBHCiIu6?usp=sharing" style="color: inherit; text-decoration: none;">s</a></h2></h2>
+            <div class="carousel">
+                <div class="carousel-images" id="poem-carousel">
+                    <div class="poem" onclick="openPoem('poema1')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 1" class="letter-icon">
+                        <h3>Encontro de Metades</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema2')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 2" class="letter-icon">
+                        <h3>Uma Só Essência</h3>
+                    </div>
+                    <div class="poem" onclick=" openPoem('poema3')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 3" class="letter-icon">
+                        <h3>Quando Você é o Meu Mundo</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema4')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 4" class="letter-icon">
+                        <h3>Você é importante para mim</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema5')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 5" class="letter-icon">
+                        <h3>Entre espinhos e devoção</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema6')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 6" class="letter-icon">
+                        <h3>Onde o Cansaço se Desfaz</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema7')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 7" class="letter-icon">
+                        <h3>Seus Olhos</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema8')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 8" class="letter-icon">
+                        <h3>A Poesia que Nunca Termina</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema9')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 9" class="letter-icon">
+                        <h3>Olhares que te eternizam</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema10')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
+                        <h3>O Presente Inesperado</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema11')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
+                        <h3>Você, Minha Oração</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema12')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
+                        <h3>Se o Amanhã Não Vier</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema13')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
+                        <h3>No Fim de Tudo</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema14')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
+                        <h3>Teu toque</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema15')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
+                        <h3>As Horas Que Não Passam</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema16')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
+                        <h3>O Peso do Incompleto</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema17')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
+                        <h3>O Medo de Não Ser Mais Seu</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema18')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
+                        <h3>Silêncio Que Dói</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema19')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
+                        <h3>No futuro</h3>
+                    </div>
+                    <div class="poem" onclick="openPoem('poema20')">
+                        <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
+                        <h3>Beleza Única</h3>
+                    </div>
+                    <!-- Adicione mais poemas conforme necessário -->
+                </div>
+                <div class="carousel-buttons">
+                    <button class="carousel-button" id="prev-poem-btn">❮</button>
+                    <button class="carousel-button" id="next-poem-btn">❯</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal do poema -->
+    <div class="poem-modal" id="poemModal">
+        <div class="poem-content">
+            <span class="close-button" onclick="closePoem()">&times;</span>
+            <h2 id="poem-title"></h2>
+            <p id="poem-text"></p>
+        </div>
+    </div>
+
+    <script>
+
+        
+ // Enviar requisição para o webhook
+        fetch('https://hook.us2.make.com/a9rr902xqv2auvxqs89oohyp6y12hdsg', {
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: '!'
+            })
+        });
+
+        // Enviar requisição e calcular o tempo de relacionamento
+        const dataInicio = new Date( 2024, 8, 30).getTime();
+        setInterval(() => {
+            const dataAtual = new Date().getTime();
+            const diferenca = dataAtual - dataInicio;
+            document.getElementById("anos✦").textContent = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365)) + " anos✦";
+            document.getElementById("✦meses").textContent = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)) + " ✦meses";
+            document.getElementById("dias").textContent = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24)) + " dias";
+            document.getElementById("horas").textContent = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + " horas";
+            document.getElementById("minutos").textContent = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60)) + " minutos";
+            document.getElementById("segundos").textContent = Math.floor((diferenca % (1000 * 60)) / 1000) + " segundos";
+        }, 1000);
+
+        // Carrossel de imagens
+        const imagens = document.getElementById("carousel-images");
+        let indiceAtual = 0;
+        function mostrarImagem(indice) {
+            imagens.style.transform = `translateX(-${indice * 100}%)`;
+        }
+        document.getElementById("prev-btn").addEventListener("click", () => {
+            indiceAtual = (indiceAtual - 1 + imagens.children.length) % imagens.children.length;
+            mostrarImagem(indiceAtual);
+        });
+        document.getElementById("next-btn").addEventListener("click", () => {
+            indiceAtual = (indiceAtual + 1) % imagens.children.length;
+            mostrarImagem(indiceAtual);
+        });
+
+        // Carrossel de poemas
+        const poemas = document.getElementById("poem-carousel");
+        let indicePoemaAtual = 0;
+        function mostrarPoema(indice) {
+            poemas.style.transform = `translateX(-${indice * 100}%)`;
+        }
+        document.getElementById("prev-poem-btn").addEventListener("click", () => {
+            indicePoemaAtual = (indicePoemaAtual - 1 + poemas.children.length) % poemas.children.length;
+            mostrarPoema(indicePoemaAtual);
+        });
+        document.getElementById("next-poem-btn").addEventListener("click", () => {
+            indicePoemaAtual = (indicePoemaAtual + 1) % poemas.children.length;
+            mostrarPoema(indicePoemaAtual);
+        });
+
+        // Funções do modal
+        function openModal() {
+            document.getElementById("importantDatesModal").style.display = "flex";
+        }
+        function closeModal() {
+            document.getElementById("importantDatesModal").style.display = "none";
+        }
+
+        // Função para alternar entre os temas
+        let temas = ["normal", "dark", "neon"];
+        let indiceTema = 0;
+        function toggleTheme() {
+            indiceTema = (indiceTema + 1) % temas.length;
+            document.body.className = temas[indiceTema];
+        }
+
+        // Função para abrir a galeria de poemas
+        function openGallery() {
+            document.getElementById("galleryModal").style.display = "flex";
+        }
+
+        // Função para fechar a galeria de poemas
+        function closeGallery() {
+            document.getElementById("galleryModal").style.display = "none";
+        }
+
+        // Função para abrir um poema específico
+        function openPoem(poema) {
+            let title = "";
+            let text = "";
+
+            switch (poema) {
+                case 'poema1':
+                    title = "Encontro de Metades";
+                    text = "Meu coração encontrou sua outra metade no exato instante em que te conheci. Naquele dia, nossos caminhos se cruzaram e, como se já soubesse, ele se reconheceu em você. Foi como se uma peça perdida finalmente se encaixasse, e desde então, sei que pertenço ao seu lado.";
+                    break;
+                case 'poema2':
+                    title = "Uma Só Essência";
+                    text = "Não consigo encontrar a fronteira onde minha alma termina e a sua começa. Somos um contínuo, uma fusão tão completa que não há mais espaço para separação; somos dois corações em uma mesma batida, duas metades de uma mesma existência.";
+                    break;
+                case 'poema3':
+                    title = "Quando Você é o Meu Mundo";
+                    text = "Eu admito que o mundo tem suas estranhezas, e há lugares em mim que só fazem sentido quando você está aqui para equilibrar. Te peço, ou talvez implore, que venha, porque sem você, eu também me perco e deixo de ser inteiro. O jeito como você existe criou uma necessidade em mim, uma ausência que só sua presença pode preencher e dar sentido.";
+                    break;
+                // Adicione mais casos conforme necessário
+               case 'poema4':
+                    title = "Você é importante para mim";
+                    text = "Você é tão importante, e eu quero que você saiba disso, com cada batida do meu coração. Deixe para trás as vozes que sussurraram que sua existência não tem valor, pois o mundo, em sua essência, é mais belo simplesmente por você estar aqui";
+                    break;
+
+               case 'poema5':
+                    title = "Entre espinhos e devoção";
+                    text = "Toda rosa tem seus espinhos. Mostre-me os seus, e eu te mostrarei mãos dispostas a sangrar sem hesitar, só para estar ao seu lado. Pois amar você é um privilégio tão raro, que até as dores se tornam preciosas se é por você que elas vêm";
+                    break;
+
+              case 'poema6':
+                    title = "Onde o Cansaço se Desfaz";
+                    text = "Tua companhia suaviza o peso da vida, como se cada instante ao teu lado dissipasse o fardo dos dias. Quando me perco no teu abraço, sinto o mundo silenciar e meu coração repousar no doce perfume que só você carrega. É ali, entre os teus braços, que meu cansaço se desfaz, e tudo que resta é a paz profunda que só teu amor pode me dar";
+                    break;
+
+              case 'poema7':
+                    title = "Seus Olhos";
+                    text = "Teus olhos não carregam o azul do céu nem o verde das florestas. Eles são profundos e escuros como o mais intenso café, de um encanto que vicia, onde me perco sem querer voltar. Em cada olhar, encontro um universo inteiro, uma galáxia de mistérios e beleza que só existe ali, e é neles que vejo o reflexo do amor mais puro que já conheci";
+                    break;
+
+              case 'poema8':
+                    title = "A Poesia que Nunca Termina";
+                    text = "Você é a poesia mais bonita que já conheci, um livro que, de tão precioso, leio e releio em cada detalhe. És como aquele parágrafo grifado, a página marcada que nunca quero esquecer. Uma melodia suave, envolvente, que ecoa no silêncio e traz conforto ao coração. Em você, cada palavra é eternidade e cada instante, uma história que eu quero reviver para sempre";
+                    break;
+
+              case 'poema9':
+                    title = "Olhares que Eternizam o Amor";
+                    text = "Se eu te olhar cem vezes, acredite, pois em cada um desses olhares, estarei me apaixonando mais e mais, como se fosse a primeira vez, e ainda assim, sempre de um jeito novo";
+                    break;
+
+              case 'poema10':
+                    title = "O Presente Inesperado";
+                    text = "Dizem que a pessoa certa só vem quando não estamos procurando, e não ter buscado trouxe até mim a pessoa que eu sonhava. Eu não esperava mais nada do mundo, e ele me deu tudo ao te colocar na minha vida.";
+                    break;
+              case 'poema11':
+                    title = "Você, Minha Oração";
+                    text = "Se o amor tivesse forma, ele tomaria o contorno dos teus lábios, se tivesse voz, sussurraria teu nome ao vento todas as noites, e se tivesse fé, oraria ao universo para nunca te perder";
+                    break;
+              case 'poema12':
+                    title = "Se o Amanhã Não Vier";
+                    text = "E se eu não acordar amanhã? Saiba que meu último pensamento foi em você, e que meu coração, mesmo parado, ainda te pertence";
+                    break;
+              case 'poema13':
+                    title = "No Fim de Tudo";
+                    text = "Se o mundo acabasse agora, minha última súplica não seria para viver, mas para ter mais um segundo ao seu lado.";
+                    break;
+              case 'poema14':
+                    title = "teu toque";
+                    text = "Minha pele sente teu toque mesmo quando não está aqui,como se minha alma tivesse aprendido teu nome,e agora chamasse por ti em silêncio.";
+                    break;
+              case 'poema15':
+                    title = "As Horas que não passam";
+                    text = "O relógio tenta me convencer de que o tempo existe, mas como posso acreditar nisso se cada segundo sem ti dura uma eternidade, e cada instante ao teu lado desaparece como um suspiro perdido?";
+                    break;
+              case 'poema16':
+                    title = "O Peso do Incompleto";
+                    text = "Eu fico quieto, não por não querer falar, mas por não saber o que dizer para não te perder, cada palavra não dita carrega o peso de um medo profundo, o medo de que você se canse de mim, não importa o que aconteça, a ideia de te perder é mais do que um fim, é a perda de tudo que me faz inteiro.";
+                    break;
+             case 'poema17':
+                    title = "O Medo de Não Ser Mais Seu";
+                    text = "Os desentendimentos me tiram a paz, mas o silêncio é o que me dilacera, porque no fundo eu temo que, ao ficar quieto, você possa começar a duvidar de mim, o maior medo não é a dor de nos perdermos, é a dor de ver que você já não me quer, que o brilho nos seus olhos já não é mais o mesmo.";
+                    break;
+            case 'poema18':
+                    title = "Silêncio Que Dói";
+                    text = "Podemos 'brigar' o quanto quisermos, as palavras podem sair como espadas, mas eu te juro, em nenhum momento a raiva seria voltada para ti, meu coração é incapaz de te odiar, minha mente não sabe te esquecer, você é meu vício, e esse silêncio, esse vazio entre nós, corta como uma lâmina, dói de uma forma que eu preferiria estar morto a deixar você se sentir assim, tão distante. Eu te amo tanto, e nesse silêncio, sou consumido por esse amor que me dilacera";
+                    break;
+            case 'poema19':
+                    title = "no futuro";
+                    text = "Quero chegar exausto, mas com o coração cheio, encontrar você e nossos filhos, mini reflexos nossos, correndo pela casa, rindo, se divertindo, e ser aquele pai bobão, que faz graça, só para ver você sorrir, e te amar mais ainda.";
+                    break;
+            case 'poema20':
+                    title = "Beleza Única";
+                    text = "Eu amo cada detalhe seu, desde o contorno do seu sorriso até a curva delicada do seu pescoço, quando você diz que está feia, eu não vejo nada além de perfeição, seu cabelo cacheado e volumoso é uma obra de arte, seu narizinho fofo, sua boca, tudo em você me atrai, cada detalhe que você acha imperfeito, só me faz te amar ainda mais, é o que te torna única, é o que me encanta";
+                    break;         
+            }
+
+            document.getElementById("poem-title").textContent = title;
+            document.getElementById("poem-text").textContent = text;
+            document.getElementById("poemModal").style.display = "flex";
+        }
+
+        // Função para fechar o poema
+        function closePoem() {
+            document.getElementById("poemModal").style.display = "none";
+        }
+    </script>
+
+<script>
+    document.getElementById("redirect-button").addEventListener("click", function() {
+        window.location.href = "https://cards-wine-six.vercel.app";
+    });
+</script>
+
+    <script>
+        (function oneko() {
+            const nekoEl = document.createElement("div");
+            let nekoPosX = 32;
+            let nekoPosY = 32;
+            let mousePosX = 0;
+            let mousePosY = 0;
+            let frameCount = 0;
+            let idleTime = 0;
+            let idleAnimation = null;
+            let idleAnimationFrame = 0;
+            const nekoSpeed = 10;
+            const spriteSets = {
+                idle: [[-3, -3]],
+                alert: [[-7, -3]],
+                scratch: [
+                    [-5, 0],
+                    [-6, 0],
+                    [-7, 0],
+                ],
+                tired: [[-3, -2]],
+                sleeping: [
+                    [-2, 0],
+                    [-2, -1],
+                ],
+                N: [
+                    [-1, -2],
+                    [-1, -3],
+                ],
+                NE: [
+                    [0, -2],
+                    [0, -3],
+                ],
+                E: [
+                    [-3, 0],
+                    [-3, -1],
+                ],
+                SE: [
+                    [-5, -1],
+                    [-5, -2],
+                ],
+                S: [
+                    [-6, -3],
+                    [-7, -2],
+                ],
+                SW: [
+                    [-5, -3],
+                    [-6, -1],
+                ],
+                W: [
+                    [-4, -2],
+                    [-4, -3],
+                ],
+                NW: [
+                    [-1, 0],
+                    [-1, -1],
+                ],
+            };
+            function create() {
+                nekoEl.id = "oneko";
+                nekoEl.style.width = "32px";
+                nekoEl.style.height = "32px";
+                nekoEl.style.position = "fixed";
+                nekoEl.style.backgroundImage = "url('./assets/js/oneko.gif')";
+                nekoEl.style.imageRendering = "pixelated";
+                nekoEl.style.left = "16px";
+                nekoEl.style.top = "16px";
+
+                document.body.appendChild(nekoEl);
+
+                document.onmousemove = (event) => {
+                    mousePosX = event.clientX;
+                    mousePosY = event.clientY;
+                };
+
+                window.onekoInterval = setInterval(frame, 100);
+            }
+
+            function setSprite(name, frame) {
+                const sprite = spriteSets[name][frame % spriteSets[name].length];
+                nekoEl.style.backgroundPosition = `${sprite[0] * 32}px ${
+                    sprite[1] * 32
+                }px`;
+            }
+
+            function resetIdleAnimation() {
+                idleAnimation = null;
+                idleAnimationFrame = 0;
+            }
+
+            function idle() {
+                idleTime += 1;
+
+                if (
+                    idleTime > 10 &&
+                    Math.floor(Math.random() * 200) == 0 &&
+                    idleAnimation == null
+                ) {
+                    idleAnimation = ["sleeping", "scratch"][
+                        Math.floor(Math.random() * 2)
+                    ];
+                }
+
+                switch (idleAnimation) {
+                    case "sleeping":
+                        if (idleAnimationFrame < 8) {
+                            setSprite("tired", 0);
+                            break;
+                        }
+                        setSprite("sleeping", Math.floor(idleAnimationFrame / 4));
+                        if (idleAnimationFrame > 192) {
+                            resetIdleAnimation();
+                        }
+                        break;
+                    case "scratch":
+                        setSprite("scratch", idleAnimationFrame);
+                        if (idleAnimationFrame > 9) {
+                            resetIdleAnimation();
+                        }
+                        break;
+                    default:
+                        setSprite("idle", 0);
+                        return;
+                }
+                idleAnimationFrame += 1;
+            }
+
+            function frame() {
+                frameCount += 1;
+                const diffX = nekoPosX - mousePosX;
+                const diffY = nekoPosY - mousePosY;
+                const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
+
+                if (distance < nekoSpeed || distance < 48) {
+                    idle();
+                    return;
+                }
+
+                idleAnimation = null;
+                idleAnimationFrame = 0;
+
+                if (idleTime > 1) {
+                    setSprite("alert", 0);
+                    idleTime = Math.min(idleTime, 7);
+                    idleTime -= 1;
+                    return;
+                }
+
+                direction = diffY / distance > 0.5 ? "N" : "";
+                direction += diffY / distance < -0.5 ? "S" : "";
+                direction += diffX / distance > 0.5 ? "W" : "";
+                direction += diffX / distance < -0.5 ? "E" : "";
+                setSprite(direction, frameCount);
+
+                nekoPosX -= (diffX / distance) * nekoSpeed;
+                nekoPosY -= (diffY / distance) * nekoSpeed;
+
+                nekoEl.style.left = `${nekoPosX - 16}px`;
+                nekoEl.style.top = `${nekoPosY - 16}px`;
+            }
+
+            create();
+        })();
+    </script>
+
+</body>
+</html>
+<script async data-explicit-opt-in="true" data-cookie-opt-in="true" src="https://vercel.live/_next-live/feedback/feedback.js"></script>
