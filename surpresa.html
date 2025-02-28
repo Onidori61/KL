@@ -209,21 +209,6 @@ background-size: cover;
             }
         }
 
-        /* Estilos do botão de datas importantes */
-        .important-dates-button {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 40px;
-            height: 40px;
-            background-image: url('https://i.ibb.co/kB1YSk3/icon.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-        }
-
         /* Estilos do botão de alternar tema */
         .theme-button {
             position: fixed;
@@ -584,14 +569,11 @@ background-size: cover;
         </div>
     </div>
 
-    <!-- Botão de datas importantes -->
-    <button class="important-dates-button" onclick="openModal()"></button>
 
     <!-- Botão de alternar tema -->
     <button class="theme-button" id="theme-button" onclick="toggleTheme()"></button>
 
-    <!-- Botão de abrir a galeria de poemas -->
-    <button class="letter-button" onclick="openGallery()">📜</button>
+  
 
     <!-- Modal de datas importantes -->
     <div class="modal" id="importantDatesModal">
