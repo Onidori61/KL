@@ -912,7 +912,7 @@ background-size: cover;
 </script>
 
     <script>
-        (function oneko() {
+        (function Mia() {
             const nekoEl = document.createElement("div");
             let nekoPosX = 32;
             let nekoPosY = 32;
@@ -970,11 +970,11 @@ background-size: cover;
                 ],
             };
             function create() {
-                nekoEl.id = "oneko";
+                nekoEl.id = "Mia";
                 nekoEl.style.width = "32px";
                 nekoEl.style.height = "32px";
                 nekoEl.style.position = "fixed";
-                nekoEl.style.backgroundImage = "url('./assets/js/oneko.gif')";
+                nekoEl.style.backgroundImage = "url('./assets/js/Mia.gif')";
                 nekoEl.style.imageRendering = "pixelated";
                 nekoEl.style.left = "16px";
                 nekoEl.style.top = "16px";
@@ -986,7 +986,7 @@ background-size: cover;
                     mousePosY = event.clientY;
                 };
 
-                window.onekoInterval = setInterval(frame, 100);
+                window.MiaInterval = setInterval(frame, 100);
             }
 
             function setSprite(name, frame) {
