@@ -240,6 +240,21 @@ background-size: cover;
             background-color: rgba(255, 255, 255, 0.3);
         }
 
+        /*abrir joguinho em outra página*/
+        .joguinhos-button {
+     position: fixed;
+     bottom: 10px;
+     right: 60px;
+     width: 40px;
+     height: 40px;
+     background-image: url('https://i.ibb.co/MyQXdwPG/image.png');
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-color: transparent;
+     border: none;
+     cursor: pointer;
+}
+
         /* Estilos do botão de abrir a galeria de poemas */
         .letter-button {
             position: fixed;
@@ -928,10 +943,10 @@ background-size: cover;
 </script>
 
     <script>
-    // Função para exibir o botão apenas no dia 30 (botão de supresa)
+    // Função para exibir o botão apenas no dia 28 (botão de supresa)
     function checkDate() {
         const today = new Date();
-        if (today.getDate() === 30) {
+        if (today.getDate() === 28) {
             document.getElementById('hidden-button').style.display = 'block';
         }
     }
@@ -1105,5 +1120,7 @@ background-size: cover;
         })();
     </script>
 
-</body>
+        <!-- Botão para Joguinhos -->
+        <button class="joguinhos-button" onclick="window.location.href='joguinho.html'"></button>
+    </body>
 </html>
