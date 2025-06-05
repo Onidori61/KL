@@ -380,6 +380,103 @@ background-size: cover;
      scrollbar-width: none;
      cursor: url('./assets/js/cursor.gif'), pointer !important; 
      }
+
+     .vale-history-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.8);
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.vale-history-content {
+  background: #232946;
+  padding: 32px 24px 24px 24px;
+  border-radius: 18px;
+  min-width: 320px;
+  max-width: 90vw;
+  min-height: 180px;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 8px 32px #0005;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.vale-history-container {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  justify-content: center;
+  width: 100%;
+}
+.vale-history-card {
+  background: #333b5ff0;
+  color: #ffffff;
+  min-width: 100px;
+  min-height: 100px;
+  width: 110px;
+  height: 110px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px #0002;
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+.vale-history-card:hover {
+  background: #b8b8b800;
+  flex: 2;
+}
+.vale-history-date {
+  font-size: 0.9em;
+  color: #888;
+  margin-bottom: 4px;
+}
+.vale-history-text {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.vale-history-x {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  color: #ff4081;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 2;
+  transition: color 0.2s;
+}
+.vale-history-x:hover {
+  color: #d81b60;
+}
+@media (max-width: 600px) {
+  .vale-history-content {
+    min-width: 0;
+    padding: 18px 4vw 18px 4vw;
+  }
+  .vale-history-container {
+    gap: 8px;
+  }
+  .vale-history-card {
+    min-width: 80px;
+    min-height: 80px;
+    width: 90px;
+    height: 90px;
+    font-size: 0.95em;
+  }
+}
         
     </style>
 
@@ -438,6 +535,212 @@ background-size: cover;
     }
 
     /* Outros estilos existentes... */
+
+ /* Vale Card Animado - nomes exclusivos */
+.vale-card-container {
+  position: relative;
+  width: 190px;
+  height: 254px;
+  transition: 200ms;
+  background: none;
+}
+@media (max-width: 600px) {
+  .vale-card-container {
+    width: 90vw;
+    height: 50vw;
+    max-width: 300px;
+    max-height: 400px;
+  }
+  #vale-card {
+    font-size: 16px;
+  }
+  .vale-card-title {
+    font-size: 1.2rem !important;
+  }
+}
+.vale-card-container:active {
+  width: 180px;
+  height: 245px;
+}
+#vale-card {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: 700ms;
+  background: linear-gradient(43deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 46%, rgb(255, 204, 112) 100%);
+  box-shadow: 0 8px 32px #0005;
+}
+.vale-card-subtitle {
+  transform: translateY(160px);
+  color: rgb(134, 110, 221);
+  text-align: center;
+  width: 100%;
+  font-size: 1.1em;
+  margin-top: 20px;
+}
+.vale-card-title {
+  opacity: 1;
+  transition-duration: 300ms;
+  position: absolute;
+  font-size: x-large;
+  font-weight: bold;
+  color: white;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+#vale-prompt {
+  bottom: 8px;
+  left: 12px;
+  z-index: 20;
+  font-size: 20px;
+  font-weight: bold;
+  transition: 300ms ease-in-out-out;
+  position: absolute;
+  max-width: 110px;
+  color: rgb(255, 255, 255);
+}
+.vale-tracker {
+  position: absolute;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+}
+.vale-tracker:hover {
+  cursor: pointer;
+}
+.vale-tracker:hover ~ #vale-card #vale-prompt {
+  opacity: 0;
+}
+.vale-tracker:hover ~ #vale-card {
+  transition: 300ms;
+  filter: brightness(1.1);
+}
+.vale-card-container:hover #vale-card::before {
+  transition: 200ms;
+  content: '';
+  opacity: 80%;
+}
+.vale-canvas {
+  perspective: 800px;
+  inset: 0;
+  z-index: 200;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "vale-tr-1 vale-tr-2 vale-tr-3 vale-tr-4 vale-tr-5"
+    "vale-tr-6 vale-tr-7 vale-tr-8 vale-tr-9 vale-tr-10"
+    "vale-tr-11 vale-tr-12 vale-tr-13 vale-tr-14 vale-tr-15"
+    "vale-tr-16 vale-tr-17 vale-tr-18 vale-tr-19 vale-tr-20"
+    "vale-tr-21 vale-tr-22 vale-tr-23 vale-tr-24 vale-tr-25";
+}
+#vale-card::before {
+  content: '';
+  background: linear-gradient(43deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 46%, rgb(255, 204, 112) 100%);
+  filter: blur(2rem);
+  opacity: 30%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  transition: 200ms;
+}
+.vale-tr-1 { grid-area: vale-tr-1; }
+.vale-tr-2 { grid-area: vale-tr-2; }
+.vale-tr-3 { grid-area: vale-tr-3; }
+.vale-tr-4 { grid-area: vale-tr-4; }
+.vale-tr-5 { grid-area: vale-tr-5; }
+.vale-tr-6 { grid-area: vale-tr-6; }
+.vale-tr-7 { grid-area: vale-tr-7; }
+.vale-tr-8 { grid-area: vale-tr-8; }
+.vale-tr-9 { grid-area: vale-tr-9; }
+.vale-tr-10 { grid-area: vale-tr-10; }
+.vale-tr-11 { grid-area: vale-tr-11; }
+.vale-tr-12 { grid-area: vale-tr-12; }
+.vale-tr-13 { grid-area: vale-tr-13; }
+.vale-tr-14 { grid-area: vale-tr-14; }
+.vale-tr-15 { grid-area: vale-tr-15; }
+.vale-tr-16 { grid-area: vale-tr-16; }
+.vale-tr-17 { grid-area: vale-tr-17; }
+.vale-tr-18 { grid-area: vale-tr-18; }
+.vale-tr-19 { grid-area: vale-tr-19; }
+.vale-tr-20 { grid-area: vale-tr-20; }
+.vale-tr-21 { grid-area: vale-tr-21; }
+.vale-tr-22 { grid-area: vale-tr-22; }
+.vale-tr-23 { grid-area: vale-tr-23; }
+.vale-tr-24 { grid-area: vale-tr-24; }
+.vale-tr-25 { grid-area: vale-tr-25; }
+.vale-tr-1:hover ~ #vale-card { transform: rotateX(20deg) rotateY(-10deg) rotateZ(0deg);}
+.vale-tr-2:hover ~ #vale-card { transform: rotateX(20deg) rotateY(-5deg) rotateZ(0deg);}
+.vale-tr-3:hover ~ #vale-card { transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg);}
+.vale-tr-4:hover ~ #vale-card { transform: rotateX(20deg) rotateY(5deg) rotateZ(0deg);}
+.vale-tr-5:hover ~ #vale-card { transform: rotateX(20deg) rotateY(10deg) rotateZ(0deg);}
+.vale-tr-6:hover ~ #vale-card { transform: rotateX(10deg) rotateY(-10deg) rotateZ(0deg);}
+.vale-tr-7:hover ~ #vale-card { transform: rotateX(10deg) rotateY(-5deg) rotateZ(0deg);}
+.vale-tr-8:hover ~ #vale-card { transform: rotateX(10deg) rotateY(0deg) rotateZ(0deg);}
+.vale-tr-9:hover ~ #vale-card { transform: rotateX(10deg) rotateY(5deg) rotateZ(0deg);}
+.vale-tr-10:hover ~ #vale-card { transform: rotateX(10deg) rotateY(10deg) rotateZ(0deg);}
+.vale-tr-11:hover ~ #vale-card { transform: rotateX(0deg) rotateY(-10deg) rotateZ(0deg);}
+.vale-tr-12:hover ~ #vale-card { transform: rotateX(0deg) rotateY(-5deg) rotateZ(0deg);}
+.vale-tr-13:hover ~ #vale-card { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);}
+.vale-tr-14:hover ~ #vale-card { transform: rotateX(0deg) rotateY(5deg) rotateZ(0deg);}
+.vale-tr-15:hover ~ #vale-card { transform: rotateX(0deg) rotateY(10deg) rotateZ(0deg);}
+.vale-tr-16:hover ~ #vale-card { transform: rotateX(-10deg) rotateY(-10deg) rotateZ(0deg);}
+.vale-tr-17:hover ~ #vale-card { transform: rotateX(-10deg) rotateY(-5deg) rotateZ(0deg);}
+.vale-tr-18:hover ~ #vale-card { transform: rotateX(-10deg) rotateY(0deg) rotateZ(0deg);}
+.vale-tr-19:hover ~ #vale-card { transform: rotateX(-10deg) rotateY(5deg) rotateZ(0deg);}
+.vale-tr-20:hover ~ #vale-card { transform: rotateX(-10deg) rotateY(10deg) rotateZ(0deg);}
+.vale-tr-21:hover ~ #vale-card { transform: rotateX(-20deg) rotateY(-10deg) rotateZ(0deg);}
+.vale-tr-22:hover ~ #vale-card { transform: rotateX(-20deg) rotateY(-5deg) rotateZ(0deg);}
+.vale-tr-23:hover ~ #vale-card { transform: rotateX(-20deg) rotateY(0deg) rotateZ(0deg);}
+.vale-tr-24:hover ~ #vale-card { transform: rotateX(-20deg) rotateY(5deg) rotateZ(0deg);}
+.vale-tr-25:hover ~ #vale-card { transform: rotateX(-20deg) rotateY(10deg) rotateZ(0deg);}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Vale Diário - Card Uiverse */
+.card {
+  width: 190px;
+  height: 254px;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card__content {
+  background: rgb(5, 6, 45);
+  border-radius: 17px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 600px) {
+  .card {
+    width: 90vw;
+    height: 50vw;
+    max-width: 300px;
+    max-height: 400px;
+  }
+}
 </style>
 
 </head>
@@ -934,6 +1237,51 @@ background-size: cover;
         function closePoem() {
             document.getElementById("poemModal").style.display = "none";
         }
+
+        function openValeHistory(vales) {
+  const container = document.getElementById("vale-history-container");
+  const emptyMsg = document.getElementById("vale-history-empty");
+  container.innerHTML = "";
+  if (!vales || vales.length === 0) {
+    emptyMsg.style.display = "block";
+    document.getElementById("valeHistoryModal").style.display = "flex";
+    return;
+  }
+  emptyMsg.style.display = "none";
+  vales.forEach(v => {
+    const card = document.createElement("div");
+    card.className = "vale-history-card";
+    card.innerHTML = `
+      <button class="vale-history-x" title="Usar vale" onclick="deleteValeHistory('${v.data}', event)">&times;</button>
+      <div class="vale-history-text">${v.texto}</div>
+    `;
+    container.appendChild(card);
+  });
+  document.getElementById("valeHistoryModal").style.display = "flex";
+}
+
+function deleteValeHistory(data, event) {
+  event.stopPropagation();
+  if (!confirm("Tem certeza que deseja marcar este vale como usado?")) return;
+  db.collection("vales").doc(uid).collection("resgates").doc(data).delete().then(() => {
+    // Atualiza o histórico após deletar
+    db.collection("vales").doc(uid).collection("resgates").get().then(qs => {
+      let vales = [];
+      qs.forEach(doc => vales.push(doc.data()));
+      vales.sort((a, b) => b.data.localeCompare(a.data));
+      openValeHistory(vales);
+      // Só atualiza o estado se NÃO for o vale de hoje
+      if (data !== today) {
+        atualizarEstado();
+      } else {
+        // Se apagou o vale de hoje, mantém o botão bloqueado
+        status.textContent = "Vale já resgatado hoje";
+        btn.title = "Clique para ver seu histórico";
+        img.src = "https://i.ibb.co/xt4qJ94H/image.png";
+      }
+    });
+  });
+}
     </script>
 
 <script>
@@ -1120,7 +1468,125 @@ background-size: cover;
         })();
     </script>
 
-        <!-- Botão para Joguinhos -->
+     <!-- Modal do Histórico de Vales --> 
+    <div class="vale-history-modal" id="valeHistoryModal">
+  <div class="vale-history-content">
+    <h2 style="text-align:center;margin-bottom:18px;">Histórico de Vales</h2>
+    <div class="vale-history-container" id="vale-history-container"></div>
+    <div id="vale-history-empty" style="display:none; color:#aaa; margin-top:20px;">Nenhum vale resgatado ainda.</div>
+  </div>
+</div>
+
+    <!-- Modal do Vale Diário -->
+<div id="vale-modal-bg" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;">
+  <div class="card" id="vale-card" style="margin:auto;cursor:pointer;">
+    <div class="card__content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+      <p id="vale-prompt" style="margin-bottom:10px;font-weight:bold;color:#fff;">Parabéns!</p>
+      <div class="vale-card-title" id="vale-card-title" style="font-size:1.3em;font-weight:bold;color:#fff;margin-bottom:10px;">VALE DE HOJE</div>
+      <div class="vale-card-subtitle" id="vale-card-subtitle" style="color:#00DDEB;font-size:1.1em;text-align:center;">vale recebido</div>
+      <span style="margin-top:20px;color:#888;font-size:0.9em;">Clique aqui</span>
+    </div>
+  </div>
+</div>
+
+<!-- Botão do Vale Diário -->
+<button id="vale-btn" style="background:none;border:none;cursor:pointer;">
+  <img id="vale-img" src="https://i.ibb.co/KjX6JzDN/1f381.gif" alt="Vale Presente" style="width:64px;height:64px;">
+</button>
+<div id="vale-status" style="font-size:14px;margin-top:4px;text-align:center;"></div>
+
+    <!-- Botão para Joguinhos -->
         <button class="joguinhos-button" onclick="window.location.href='joguinho.html'"></button>
     </body>
 </html>
+
+<!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<!-- Firestore -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<script>
+  // Configuração do Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyDGyoBxBf387qLUc1blmjkNyHLrNT1wmtk",
+    authDomain: "capsula-do-tempo-a674f.firebaseapp.com",
+    projectId: "capsula-do-tempo-a674f",
+    storageBucket: "capsula-do-tempo-a674f.firebasestorage.app",
+    messagingSenderId: "219747310467",
+    appId: "1:219747310467:web:8ab81bf4bd74597557f4b6"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  const VALES = [
+    "Vale Beijo",
+    "Vale Abraço",
+    "Vale Cafuné",
+    "Vale Eu te amo",
+    "Vale Filme Juntos"
+  ];
+  const uid = "lohana";
+  function getTodayStr() {
+    const d = new Date();
+    return d.toLocaleDateString("sv-SE");
+  }
+  const today = getTodayStr();
+  const btn = document.getElementById("vale-btn");
+  const img = document.getElementById("vale-img");
+  const status = document.getElementById("vale-status");
+
+  function atualizarEstado() {
+    db.collection("vales").doc(uid).collection("resgates").doc(today).get().then(docSnap => {
+      if (docSnap.exists) {
+        img.src = "https://i.ibb.co/xt4qJ94H/image.png";
+        status.textContent = "Vale já resgatado hoje";
+        btn.title = "Clique para ver seu histórico";
+      } else {
+        img.src = "https://i.ibb.co/KjX6JzDN/1f381.gif";
+        status.textContent = "Vale diário disponível";
+        btn.title = "Clique para resgatar seu vale diário!";
+      }
+    });
+  }
+  atualizarEstado();
+
+  btn.onclick = function() {
+  db.collection("vales").doc(uid).collection("resgates").doc(today).get().then(docSnap => {
+    if (docSnap.exists) {
+      // Mostrar histórico em modal
+      db.collection("vales").doc(uid).collection("resgates").get().then(qs => {
+        let vales = [];
+        qs.forEach(doc => vales.push(doc.data()));
+        vales.sort((a, b) => b.data.localeCompare(a.data));
+        openValeHistory(vales);
+      });
+    } else {
+      // Sortear e salvar
+      const sorteado = VALES[Math.floor(Math.random() * VALES.length)];
+      db.collection("vales").doc(uid).collection("resgates").doc(today).set({
+        uid,
+        data: today,
+        texto: sorteado,
+        timestamp: new Date()
+      }).then(() => {
+        document.getElementById("vale-card-title").textContent = sorteado;
+        document.getElementById("vale-card-subtitle").textContent = "Vale de hoje <3";
+        document.getElementById("vale-modal-bg").style.display = "flex";
+        atualizarEstado();
+      });
+    }
+  });
+};
+
+
+// Fechar o modal ao clicar no card ou fora do card
+document.getElementById("vale-card").onclick = function(e) {
+  document.getElementById("vale-modal-bg").style.display = "none";
+  e.stopPropagation();
+};
+document.getElementById("vale-modal-bg").onclick = function(e) {
+  if (e.target === this) this.style.display = "none";
+};
+document.getElementById("valeHistoryModal").onclick = function(e) {
+  if (e.target === this) this.style.display = "none";
+};
+</script>
