@@ -897,7 +897,7 @@ background-size: cover;
         </div>
 
         <h1>Kaio e Lohana</h1>
-        <p>Oii, eu não sei por onde começar ou como expressar o que sinto, mas vou tentar ser o mais sincero possível. Estou completamente apaixonado por você, e cada dia que passa, você se torna a razão da minha felicidade. Seu olhar ilumina meus dias, e apenas te ver transforma o mundo ao meu redor em um lugar mais bonito. Às vezes, me sinto incapaz de colocar em palavras o quanto te amo, mas basta olhar nos meus olhos; eles refletem tudo o que você me faz sentir. Seu sorriso tem o poder de criar um sentimento tão profundo que é como se ele moldasse meu coração a cada instante. Cada vez que você sorri, vejo um universo de emoções, e todas elas giram em torno de um único pensamento: você. É difícil acreditar que estou realmente namorando alguém tão perfeita. Desde o primeiro momento em que te vi, meu coração disparou e pensei: 'Uau, ela é linda demais para mim'. Era como se eu fosse um plebeu diante da realeza, tão maravilhado e, ao mesmo tempo, tão inseguro, achando que não era digno de sua presença. Mas você, com sua gentileza e beleza, me acolheu e me fez sentir como o homem mais sortudo do mundo. Estar ao seu lado é como viver em um sonho profundo, um sonho que não quero acordar. A realidade sem você seria insuportável, e eu desejaria adormecer eternamente para poder te ter em meus sonhos. Se tudo isso for um sonho, então a realidade perdeu sua essência, e eu desejaria mergulhar em um sono profundo, apenas para poder sentir seu amor de novo e de novo. Você me fez ter o sonho de querer ser pai, algo que eu nunca imaginei antes. Eu estou tão ansioso para ter nossa garotinha, nossas crianças, para construir uma família ao seu lado. Você mudou completamente minha visão sobre crianças. Antes, eu odiava a ideia de ser pai ou cuidar de crianças, mas você transformou isso de uma maneira que eu nunca pensei ser possível. Hoje, eu consigo imaginar como seria acordar de madrugada juntos, acalmando o choro de nossos filhos, compartilhando o cansaço e, ao mesmo tempo, o amor que teríamos por eles. Ter uma <a href="https://drive.google.com/drive/folders/1NpVcZAFvem_N0lPAtLldlU7dBD0amqMs?usp=sharing" style="color: inherit; text-decoration: none;">vida</a> com você é tudo o que eu mais quero. Um futuro em que compartilhamos momentos simples, como rir juntos na cozinha enquanto preparamos algo, ou momentos mais intensos, como planejar os sonhos que queremos realizar. Eu imagino nossos filhos crescendo, correndo pela casa, e nós observando com amor e orgulho. Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida tem significado. Você é a luz que guia meus passos, o sonho que dá cor aos meus dias e o amor que me faz acreditar que, juntos, somos invencíveis. Eu te amo mais do que qualquer palavra pode expressar, e sei que meu amor por você só crescerá, dia após dia, enquanto construímos o nosso 'para sempre'.</p>
+        <p>Oii, eu não sei por onde começar ou como expressar o que sinto, mas vou tentar ser o mais sincero possível. Estou completamente apaixonado por você, e cada dia que passa, você se torna a razão da minha felicidade. Seu olhar ilumina meus dias, e apenas te ver transforma o mundo ao meu redor em um lugar mais bonito. Às vezes, me sinto incapaz de colocar em palavras o quanto te amo, mas basta olhar nos meus olhos; eles refletem tudo o que você me faz sentir. Seu sorriso tem o poder de criar um sentimento tão profundo que é como se ele moldasse meu coração a cada instante. Cada vez que você sorri, vejo um universo de emoções, e todas elas giram em torno de um único pensamento: você. É difícil acreditar que estou realmente namorando alguém tão perfeita. Desde o primeiro momento em que te vi, meu coração disparou e pensei: 'Uau, ela é linda demais para mim'. Era como se eu fosse um plebeu diante da realeza, tão maravilhado e, ao mesmo tempo, tão inseguro, achando que não era digno de sua presença. Mas você, com sua gentileza e beleza, me acolheu e me fez sentir como o homem mais sortudo do mundo. Estar ao seu lado é como viver em um sonho profundo, um sonho que não quero acordar. A realidade sem você seria insuport
 <h1 id="redirect-button" style="cursor: pointer;">juntos há</h1>
         <div class="time-together">
             <div class="time-box" id="anos✦">0 anos✦</div>
@@ -1501,22 +1501,46 @@ function deleteValeHistory(data, event) {
 </html>
 
 <!-- Firebase App (core) -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<!-- Firestore -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<!-- Firebase Messaging -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 <script>
-  // Configuração do Firebase
+  // Configuração do seu Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyDGyoBxBf387qLUc1blmjkNyHLrNT1wmtk",
     authDomain: "capsula-do-tempo-a674f.firebaseapp.com",
     projectId: "capsula-do-tempo-a674f",
-    storageBucket: "capsula-do-tempo-a674f.firebasestorage.app",
     messagingSenderId: "219747310467",
     appId: "1:219747310467:web:8ab81bf4bd74597557f4b6"
   };
+
+  // Inicializa o Firebase UMA VEZ
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
+  const messaging = firebase.messaging();
 
+  // Solicita permissão e obtém o token
+  function solicitarPermissaoNotificacao() {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        messaging.getToken({
+          vapidKey: "BB40cD_H_WTw_nO2hRxTgpflybdGLQs5jSgGQ2LE_PBKNb2HyJPy69n_t_9J-onYy9cXg7SgtQ2h4llm_yygEqQ"
+        }).then((currentToken) => {
+          if (currentToken) {
+            // Aqui você pode salvar o token no seu backend ou no Firestore
+            console.log("Token FCM:", currentToken);
+            // db.collection("vales").doc(uid).set({ fcmToken: currentToken }, { merge: true });
+          }
+        });
+      }
+    });
+  }
+
+  // CHAME AQUI para pedir permissão ao carregar a página
+  solicitarPermissaoNotificacao();
+
+  // ---- VALES ----
   const VALES = [
     "Vale Beijinhos",
     "Vale Abraço",
@@ -1561,43 +1585,42 @@ function deleteValeHistory(data, event) {
   atualizarEstado();
 
   btn.onclick = function() {
-  db.collection("vales").doc(uid).collection("resgates").doc(today).get().then(docSnap => {
-    if (docSnap.exists) {
-      // Mostrar histórico em modal
-      db.collection("vales").doc(uid).collection("resgates").get().then(qs => {
-        let vales = [];
-        qs.forEach(doc => vales.push(doc.data()));
-        vales.sort((a, b) => b.data.localeCompare(a.data));
-        openValeHistory(vales);
-      });
-    } else {
-      // Sortear e salvar
-      const sorteado = VALES[Math.floor(Math.random() * VALES.length)];
-      db.collection("vales").doc(uid).collection("resgates").doc(today).set({
-        uid,
-        data: today,
-        texto: sorteado,
-        timestamp: new Date()
-      }).then(() => {
-        document.getElementById("vale-card-title").textContent = sorteado;
-        document.getElementById("vale-card-subtitle").textContent = "Vale de hoje <3";
-        document.getElementById("vale-modal-bg").style.display = "flex";
-        atualizarEstado();
-      });
-    }
-  });
-};
+    db.collection("vales").doc(uid).collection("resgates").doc(today).get().then(docSnap => {
+      if (docSnap.exists) {
+        // Mostrar histórico em modal
+        db.collection("vales").doc(uid).collection("resgates").get().then(qs => {
+          let vales = [];
+          qs.forEach(doc => vales.push(doc.data()));
+          vales.sort((a, b) => b.data.localeCompare(a.data));
+          openValeHistory(vales);
+        });
+      } else {
+        // Sortear e salvar
+        const sorteado = VALES[Math.floor(Math.random() * VALES.length)];
+        db.collection("vales").doc(uid).collection("resgates").doc(today).set({
+          uid,
+          data: today,
+          texto: sorteado,
+          timestamp: new Date()
+        }).then(() => {
+          document.getElementById("vale-card-title").textContent = sorteado;
+          document.getElementById("vale-card-subtitle").textContent = "Vale de hoje <3";
+          document.getElementById("vale-modal-bg").style.display = "flex";
+          atualizarEstado();
+        });
+      }
+    });
+  };
 
-
-// Fechar o modal ao clicar no card ou fora do card
-document.getElementById("vale-card").onclick = function(e) {
-  document.getElementById("vale-modal-bg").style.display = "none";
-  e.stopPropagation();
-};
-document.getElementById("vale-modal-bg").onclick = function(e) {
-  if (e.target === this) this.style.display = "none";
-};
-document.getElementById("valeHistoryModal").onclick = function(e) {
-  if (e.target === this) this.style.display = "none";
-};
+  // Fechar o modal ao clicar no card ou fora do card
+  document.getElementById("vale-card").onclick = function(e) {
+    document.getElementById("vale-modal-bg").style.display = "none";
+    e.stopPropagation();
+  };
+  document.getElementById("vale-modal-bg").onclick = function(e) {
+    if (e.target === this) this.style.display = "none";
+  };
+  document.getElementById("valeHistoryModal").onclick = function(e) {
+    if (e.target === this) this.style.display = "none";
+  };
 </script>
