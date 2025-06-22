@@ -432,6 +432,17 @@ background-size: cover;
   justify-content: center;
   width: 100%;
 }
+@media (max-width: 600px) {
+  .vale-history-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+    justify-content: flex-start;
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: #20185c08 #fcfcff00;
+  }
+}
 .vale-history-card {
   min-width: 100px;
   min-height: 100px;
@@ -584,6 +595,13 @@ background-size: cover;
 
 /* Para mobile: expande ao toque */
 @media (hover: none) and (pointer: coarse) {
+  .vale-history-card:active,
+  .vale-history-card:focus {
+    width: 260px;
+    min-width: 260px;
+    z-index: 10;
+    box-shadow: 0 4px 24px #0006;
+  }
   .vale-history-card:active .vale-history-text,
   .vale-history-card:focus .vale-history-text {
     white-space: normal;
@@ -595,12 +613,6 @@ background-size: cover;
     border-radius: 10px;
     padding: 4px 8px;
     word-break: break-word;
-  }
-  .vale-history-card:active,
-  .vale-history-card:focus {
-    width: 260px;
-    z-index: 10;
-    box-shadow: 0 4px 24px #0006;
   }
 }
 
