@@ -1,12 +1,10 @@
-<!DOCTYPE html>  
-<html lang="pt-br">
-
-<head>
+<!DOCTYPE html>
+<html lang="pt-br"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://i.ibb.co/Rp2PxLjQ/image.png" type="image/x-icon">
     <title>Kaio e Lohana</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&amp;family=Lora:wght@400&amp;display=swap" rel="stylesheet">
     <style>
 
          
@@ -381,9 +379,31 @@ background-size: cover;
      cursor: url('./assets/js/cursor.gif'), pointer !important; 
      }
 
+     
+     .vale-history-count {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  background: #6c5ce7;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 2px 8px #0002;
+  border: 2px solid #fff2;
+  animation: counter 844ms linear 94ms 1 normal backwards;
+ }
+
+
      .vale-history-modal {
-  display: none;
-  position: fixed;
+    display: none;
+    position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
   background: rgba(0,0,0,0.8);
   align-items: center;
@@ -445,6 +465,98 @@ background-size: cover;
   margin-bottom: 10px;
   text-align: center;
 }
+
+/* Ajuste para truncar e expandir o nome do vale */
+.vale-history-text {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 90px;
+  max-width: 90px;
+  cursor: pointer;
+  transition: width 0.3s;
+  user-select: none;
+}
+
+.vale-history-card {
+  background: #333b5ff0;
+  color: #ffffff;
+  min-width: 100px;
+  min-height: 100px;
+  width: 110px;
+  height: 110px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px #0002;
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 1em;
+  overflow: visible;
+}
+
+.vale-history-card:hover,
+.vale-history-card:focus-within {
+  width: 260px;
+  z-index: 10;
+  box-shadow: 0 4px 24px #0006;
+}
+
+.vale-history-card:hover .vale-history-text,
+.vale-history-card:focus-within .vale-history-text {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  width: 220px;
+  max-width: 220px;
+  background: #232946e6;
+  border-radius: 10px;
+  padding: 4px 8px;
+  word-break: break-word;
+}
+
+/* Scroll horizontal se tiver muitos vales */
+.vale-history-container {
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap;
+  margin-top: 8px;
+  justify-content: flex-start;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #6c5ce7 #232946;
+}
+
+/* Para mobile: expande ao toque */
+@media (hover: none) and (pointer: coarse) {
+  .vale-history-card:active .vale-history-text,
+  .vale-history-card:focus .vale-history-text {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    width: 220px;
+    max-width: 220px;
+    background: #232946e6;
+    border-radius: 10px;
+    padding: 4px 8px;
+    word-break: break-word;
+  }
+  .vale-history-card:active,
+  .vale-history-card:focus {
+    width: 260px;
+    z-index: 10;
+    box-shadow: 0 4px 24px #0006;
+  }
+}
+
 .vale-history-x {
   position: absolute;
   top: 7px;
@@ -743,7 +855,7 @@ background-size: cover;
 }
 </style>
 
-</head>
+<style type="text/css" id="operaUserStyle"></style></head>
 
 <body class="normal">
     <div class="container">
@@ -897,19 +1009,19 @@ background-size: cover;
         </div>
 
         <h1>Kaio e Lohana</h1>
-        <p><p>Oii, eu não sei por onde começar ou como expressar o que sinto, mas vou tentar ser o mais sincero possível. Estou completamente apaixonado por você, e cada dia que passa, você se torna a razão da minha felicidade. Seu olhar ilumina meus dias, e apenas te ver transforma o mundo ao meu redor em um lugar mais bonito. Às vezes, me sinto incapaz de colocar em palavras o quanto te amo, mas basta olhar nos meus olhos; eles refletem tudo o que você me faz sentir. Seu sorriso tem o poder de criar um sentimento tão profundo que é como se ele moldasse meu coração a cada instante. Cada vez que você sorri, vejo um universo de emoções, e todas elas giram em torno de um único pensamento: você. É difícil acreditar que estou realmente namorando alguém tão perfeita. Desde o primeiro momento em que te vi, meu coração disparou e pensei: 'Uau, ela é linda demais para mim'. Era como se eu fosse um plebeu diante da realeza, tão maravilhado e, ao mesmo tempo, tão inseguro, achando que não era digno de sua presença. Mas você, com sua gentileza e beleza, me acolheu e me fez sentir como o homem mais sortudo do mundo. Estar ao seu lado é como viver em um sonho profundo, um sonho que não quero acordar. A realidade sem você seria insuportável, e eu desejaria adormecer eternamente para poder te ter em meus sonhos. Se tudo isso for um sonho, então a realidade perdeu sua essência, e eu desejaria mergulhar em um sono profundo, apenas para poder sentir seu amor de novo e de novo. Você me fez ter o sonho de querer ser pai, algo que eu nunca imaginei antes. Eu estou tão ansioso para ter nossa garotinha, nossas crianças, para construir uma família ao seu lado. Você mudou completamente minha visão sobre crianças. Antes, eu odiava a ideia de ser pai ou cuidar de crianças, mas você transformou isso de uma maneira que eu nunca pensei ser possível. Hoje, eu consigo imaginar como seria acordar de madrugada juntos, acalmando o choro de nossos filhos, compartilhando o cansaço e, ao mesmo tempo, o amor que teríamos por eles. Ter uma <a href="https://drive.google.com/drive/folders/1NpVcZAFvem_N0lPAtLldlU7dBD0amqMs?usp=sharing" style="color: inherit; text-decoration: none;">vida</a> com você é tudo o que eu mais quero. Um futuro em que compartilhamos momentos simples, como rir juntos na cozinha enquanto preparamos algo, ou momentos mais intensos, como planejar os sonhos que queremos realizar. Eu imagino nossos filhos crescendo, correndo pela casa, e nós observando com amor e orgulho. Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida tem significado. Você é a luz que guia meus passos, o sonho que dá cor aos meus dias e o amor que me faz acreditar que, juntos, somos invencíveis. Eu te amo mais do que qualquer palavra pode expressar, e sei que meu amor por você só crescerá, dia após dia, enquanto construímos o nosso "para sempre".</p>
+        <p></p><p>Oii, eu não sei por onde começar ou como expressar o que sinto, mas vou tentar ser o mais sincero possível. Estou completamente apaixonado por você, e cada dia que passa, você se torna a razão da minha felicidade. Seu olhar ilumina meus dias, e apenas te ver transforma o mundo ao meu redor em um lugar mais bonito. Às vezes, me sinto incapaz de colocar em palavras o quanto te amo, mas basta olhar nos meus olhos; eles refletem tudo o que você me faz sentir. Seu sorriso tem o poder de criar um sentimento tão profundo que é como se ele moldasse meu coração a cada instante. Cada vez que você sorri, vejo um universo de emoções, e todas elas giram em torno de um único pensamento: você. É difícil acreditar que estou realmente namorando alguém tão perfeita. Desde o primeiro momento em que te vi, meu coração disparou e pensei: 'Uau, ela é linda demais para mim'. Era como se eu fosse um plebeu diante da realeza, tão maravilhado e, ao mesmo tempo, tão inseguro, achando que não era digno de sua presença. Mas você, com sua gentileza e beleza, me acolheu e me fez sentir como o homem mais sortudo do mundo. Estar ao seu lado é como viver em um sonho profundo, um sonho que não quero acordar. A realidade sem você seria insuportável, e eu desejaria adormecer eternamente para poder te ter em meus sonhos. Se tudo isso for um sonho, então a realidade perdeu sua essência, e eu desejaria mergulhar em um sono profundo, apenas para poder sentir seu amor de novo e de novo. Você me fez ter o sonho de querer ser pai, algo que eu nunca imaginei antes. Eu estou tão ansioso para ter nossa garotinha, nossas crianças, para construir uma família ao seu lado. Você mudou completamente minha visão sobre crianças. Antes, eu odiava a ideia de ser pai ou cuidar de crianças, mas você transformou isso de uma maneira que eu nunca pensei ser possível. Hoje, eu consigo imaginar como seria acordar de madrugada juntos, acalmando o choro de nossos filhos, compartilhando o cansaço e, ao mesmo tempo, o amor que teríamos por eles. Ter uma <a href="https://drive.google.com/drive/folders/1NpVcZAFvem_N0lPAtLldlU7dBD0amqMs?usp=sharing" style="color: inherit; text-decoration: none;">vida</a> com você é tudo o que eu mais quero. Um futuro em que compartilhamos momentos simples, como rir juntos na cozinha enquanto preparamos algo, ou momentos mais intensos, como planejar os sonhos que queremos realizar. Eu imagino nossos filhos crescendo, correndo pela casa, e nós observando com amor e orgulho. Você não é apenas a mulher que eu amo; você é a razão pela qual minha vida tem significado. Você é a luz que guia meus passos, o sonho que dá cor aos meus dias e o amor que me faz acreditar que, juntos, somos invencíveis. Eu te amo mais do que qualquer palavra pode expressar, e sei que meu amor por você só crescerá, dia após dia, enquanto construímos o nosso "para sempre".</p>
 <h1 id="redirect-button" style="cursor: pointer;">juntos há</h1>
         <div class="time-together">
             <div class="time-box" id="anos✦">0 anos✦</div>
-            <div class="time-box" id="meses">0 meses</div>
-            <div class="time-box" id="dias">0 dias</div>
-            <div class="time-box" id="horas">0 horas</div>
-            <div class="time-box" id="minutos">0 minutos</div>
-            <div class="time-box" id="segundos">0 segundos</div>
+            <div class="time-box" id="meses">8 meses</div>
+            <div class="time-box" id="dias">265 dias</div>
+            <div class="time-box" id="horas">18 horas</div>
+            <div class="time-box" id="minutos">50 minutos</div>
+            <div class="time-box" id="segundos">25 segundos</div>
         </div>
 
         <div class="music-player">
-            <iframe style="border-radius:17px" src="https://open.spotify.com/embed/track/5lLKJdDPy7qbsta6d88lKE?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:17px" src="https://open.spotify.com/embed/track/5lLKJdDPy7qbsta6d88lKE?utm_source=generator&amp;theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
     </div>
 
@@ -930,7 +1042,7 @@ background-size: cover;
     <!-- Modal de datas importantes -->
     <div class="modal" id="importantDatesModal">
         <div class="modal-content">
-            <span class="close-button" onclick="closeModal()">&times;</span>
+            <span class="close-button" onclick="closeModal()">×</span>
             <h2>Datas Importantes</h2>
             <ul>
                 <li><p>Dia 12/09/2024 - você me fez cafuné</p></li>
@@ -947,8 +1059,8 @@ background-size: cover;
     <!-- Modal da galeria de poemas -->
     <div class="gallery-modal" id="galleryModal">
         <div class="gallery-content">
-            <span class="close-button" onclick="closeGallery()">&times;</span>
-            <h2>Galeria de Poema<a href="https://drive.google.com/drive/folders/1JkDhPJ6J2KPy2J14DIQ9aKBMXBHCiIu6?usp=sharing" style="color: inherit; text-decoration: none;">s</a></h2></h2>
+            <span class="close-button" onclick="closeGallery()">×</span>
+            <h2>Galeria de Poema<a href="https://drive.google.com/drive/folders/1JkDhPJ6J2KPy2J14DIQ9aKBMXBHCiIu6?usp=sharing" style="color: inherit; text-decoration: none;">s</a></h2>
             <div class="carousel">
                 <div class="carousel-images" id="poem-carousel">
                     <div class="poem" onclick="openPoem('poema1')">
@@ -1044,7 +1156,7 @@ background-size: cover;
     <!-- Modal do poema -->
     <div class="poem-modal" id="poemModal">
         <div class="poem-content">
-            <span class="close-button" onclick="closePoem()">&times;</span>
+            <span class="close-button" onclick="closePoem()">×</span>
             <h2 id="poem-title"></h2>
             <p id="poem-text"></p>
         </div>
@@ -1248,12 +1360,23 @@ background-size: cover;
     return;
   }
   emptyMsg.style.display = "none";
+
+  // Agrupa os vales por texto
+  const grouped = {};
   vales.forEach(v => {
+    if (!grouped[v.texto]) grouped[v.texto] = [];
+    grouped[v.texto].push(v);
+  });
+
+  Object.keys(grouped).forEach(texto => {
+    const reps = grouped[texto].length;
+    // Mostra apenas um card por tipo de vale
     const card = document.createElement("div");
     card.className = "vale-history-card";
     card.innerHTML = `
-      <button class="vale-history-x" title="Usar vale" onclick="deleteValeHistory('${v.data}', event)">&times;</button>
-      <div class="vale-history-text">${v.texto}</div>
+      ${reps > 1 ? `<span class="vale-history-count">${reps}</span>` : ""}
+      <button class="vale-history-x" title="Usar vale" onclick="deleteValeHistory('${grouped[texto][0].data}', event)">&times;</button>
+      <div class="vale-history-text" title="${texto}">${texto}</div>
     `;
     container.appendChild(card);
   });
@@ -1469,38 +1592,66 @@ function deleteValeHistory(data, event) {
     </script>
 
      <!-- Modal do Histórico de Vales --> 
-    <div class="vale-history-modal" id="valeHistoryModal">
+    <div class="vale-history-modal" id="valeHistoryModal" style="display: none;">
   <div class="vale-history-content">
     <h2 style="text-align:center;margin-bottom:18px;">Histórico de Vales</h2>
-    <div class="vale-history-container" id="vale-history-container"></div>
+    <div class="vale-history-container" id="vale-history-container"><div class="vale-history-card">
+      
+      <button class="vale-history-x" title="Usar vale" onclick="deleteValeHistory('2025-06-22', event)">×</button>
+      <div class="vale-history-text">Vale Planejar uma viagem (mesmo que a gente não faça agora)</div>
+    </div><div class="vale-history-card">
+      
+      <button class="vale-history-x" title="Usar vale" onclick="deleteValeHistory('2025-06-18', event)">×</button>
+      <div class="vale-history-text">Vale sapecagem</div>
+    </div><div class="vale-history-card">
+      
+      <button class="vale-history-x" title="Usar vale" onclick="deleteValeHistory('2025-06-15', event)">×</button>
+      <div class="vale-history-text">Vale Passar tempo juntos</div>
+    </div><div class="vale-history-card">
+      
+      <button class="vale-history-x" title="Usar vale" onclick="deleteValeHistory('2025-06-11', event)">×</button>
+      <div class="vale-history-text">Vale Pipoca</div>
+    </div><div class="vale-history-card">
+      
+      <button class="vale-history-x" title="Usar vale" onclick="deleteValeHistory('2025-06-09', event)">×</button>
+      <div class="vale-history-text">Vale Comer fora</div>
+    </div><div class="vale-history-card">
+      
+      <button class="vale-history-x" title="Usar vale" onclick="deleteValeHistory('2025-06-06', event)">×</button>
+      <div class="vale-history-text">Vale Brigadeiro</div>
+    </div><div class="vale-history-card">
+      
+      <button class="vale-history-x" title="Usar vale" onclick="deleteValeHistory('2025-06-05', event)">×</button>
+      <div class="vale-history-text">Vale Pizza</div>
+    </div></div>
     <div id="vale-history-empty" style="display:none; color:#aaa; margin-top:20px;">Nenhum vale resgatado ainda.</div>
   </div>
 </div>
 
     <!-- Modal do Vale Diário -->
-<div id="vale-modal-bg" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;">
+<div id="vale-modal-bg" style="display: none; position: fixed; z-index: 9999; top: 0px; left: 0px; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center;">
   <div class="card" id="vale-card" style="margin:auto;cursor:pointer;">
     <div class="card__content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
       <p id="vale-prompt" style="margin-bottom:10px;font-weight:bold;color:#fff;">Parabéns!</p>
-      <div class="vale-card-title" id="vale-card-title" style="font-size:1.3em;font-weight:bold;color:#fff;margin-bottom:10px;">VALE DE HOJE</div>
-      <div class="vale-card-subtitle" id="vale-card-subtitle" style="color:#00DDEB;font-size:1.1em;text-align:center;">vale recebido</div>
+      <div class="vale-card-title" id="vale-card-title" style="font-size:1.3em;font-weight:bold;color:#fff;margin-bottom:10px;">Vale Planejar uma viagem (mesmo que a gente não faça agora)</div>
+      <div class="vale-card-subtitle" id="vale-card-subtitle" style="color:#00DDEB;font-size:1.1em;text-align:center;">Vale de hoje &lt;3</div>
       <span style="margin-top:20px;color:#888;font-size:0.9em;">Clique aqui</span>
     </div>
   </div>
 </div>
 
 <!-- Botão do Vale Diário -->
-<button id="vale-btn" style="background:none;border:none;cursor:pointer;">
-  <img id="vale-img" src="https://i.ibb.co/KjX6JzDN/1f381.gif" alt="Vale Presente" style="width:64px;height:64px;">
+<button id="vale-btn" style="background:none;border:none;cursor:pointer;" title="Clique para ver seu histórico">
+  <img id="vale-img" src="https://i.ibb.co/xt4qJ94H/image.png" alt="Vale Presente" style="width:64px;height:64px;">
 </button>
-<div id="vale-status" style="font-size:14px;margin-top:4px;text-align:center;"></div>
+<div id="vale-status" style="font-size:14px;margin-top:4px;text-align:center;">Vale já resgatado hoje</div>
 
     <!-- Botão para Joguinhos -->
         <button class="joguinhos-button" onclick="window.location.href='joguinho.html'"></button>
-    </body>
-</html>
+    
 
-<!-- Firebase App (core) -->
+
+
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <!-- Firebase Messaging -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
@@ -1643,3 +1794,4 @@ const VALES = [
     if (e.target === this) this.style.display = "none";
   };
 </script>
+</body></html>
