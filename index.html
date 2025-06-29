@@ -1481,22 +1481,40 @@ function openValeHistory(vales) {
 function deleteValeHistory(data, event) {
   event.stopPropagation();
   if (!confirm("Tem certeza que deseja marcar este vale como usado?")) return;
-  db.collection("vales").doc(uid).collection("resgates").doc(data).delete().then(() => {
-    // Atualiza o histórico após deletar
-    db.collection("vales").doc(uid).collection("resgates").get().then(qs => {
-      let vales = [];
-      qs.forEach(doc => vales.push(doc.data()));
-      vales.sort((a, b) => b.data.localeCompare(a.data));
-      openValeHistory(vales);
-      // Só atualiza o estado se NÃO for o vale de hoje
-      if (data !== today) {
-        atualizarEstado();
-      } else {
-        // Se apagou o vale de hoje, mantém o botão bloqueado
-        status.textContent = "Vale já resgatado hoje";
-        btn.title = "Clique para ver seu histórico";
-        img.src = "https://i.ibb.co/xt4qJ94H/image.png";
-      }
+
+  // Busca o número do WhatsApp no Firestore
+  db.collection("vales").doc(uid).get().then(docSnap => {
+    const whatsapp = docSnap.exists && docSnap.data().whatsapp;
+    if (!whatsapp) {
+      alert("Número do WhatsApp não cadastrado.");
+      return;
+    }
+
+    // Busca o texto do vale pelo ID (data)
+    db.collection("vales").doc(uid).collection("resgates").doc(data).get().then(valeDoc => {
+      const texto = valeDoc.exists && valeDoc.data().texto;
+      const msg = encodeURIComponent(`Foi usado "${texto}" hoje!`);
+      // Abre o WhatsApp
+      window.open(`https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${msg}`, "_blank");
+
+      // Agora deleta o vale
+      db.collection("vales").doc(uid).collection("resgates").doc(data).delete().then(() => {
+        // Atualiza o histórico após deletar
+        db.collection("vales").doc(uid).collection("resgates").get().then(qs => {
+          let vales = [];
+          qs.forEach(doc => vales.push(doc.data()));
+          vales.sort((a, b) => b.data.localeCompare(a.data));
+          openValeHistory(vales);
+          // Só atualiza o estado se NÃO for o vale de hoje
+          if (data !== today) {
+            atualizarEstado();
+          } else {
+            status.textContent = "Vale já resgatado hoje";
+            btn.title = "Clique para ver seu histórico";
+            img.src = "https://i.ibb.co/xt4qJ94H/image.png";
+          }
+        });
+      });
     });
   });
 }
