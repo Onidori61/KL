@@ -15,7 +15,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* Estilos para a paleta normal */
+        /* Tema normal */
         .normal {
             background: url("https://i.ibb.co/HV7kdTd/image.png") no-repeat center center fixed;
 background-size: cover;
@@ -35,7 +35,7 @@ background-size: cover;
             color: #e2e8f0;
         }
 
-        /* Estilos para a paleta escura */
+        /* Tema escuro */
         .dark {
             background: url("https://i.ibb.co/zRZ58YB/56c2555db18c976b4dddfe331e1e8a6f.png") no-repeat center center fixed;
 background-size: cover;
@@ -57,7 +57,7 @@ background-size: cover;
             color: #ffffff;
         }
 
-        /* Estilos para a paleta neon */
+        /* Tema neon */
         .neon {
             background: url("https://i.ibb.co/k28FRqq2/image.png") no-repeat center center fixed;
 background-size: cover;
@@ -88,8 +88,8 @@ background-size: cover;
     overflow: hidden; 
     position: relative; 
     animation: fadeIn 1.5s ease; 
-    background-color: #1f29374d; /* Ajuste para 0.3 ou 0.2 */
-    backdrop-filter: blur(10px); /* Adicionando um efeito de desfoque */
+    background-color: #1f29374d; 
+    backdrop-filter: blur(10px); /* efeito de desfoque */
 }
 
         .carousel {
@@ -204,7 +204,7 @@ background-size: cover;
             }
         }
 
-        /* Estilos do botão de datas importantes */
+        /* botão de datas importantes */
         .important-dates-button {
             position: fixed;
             bottom: 10px;
@@ -219,7 +219,7 @@ background-size: cover;
             cursor: pointer;
         }
 
-        /* Estilos do botão de alternar tema */
+        /* botão de alternar tema */
         .theme-button {
             position: fixed;
             bottom: 60px;
@@ -253,7 +253,7 @@ background-size: cover;
      cursor: pointer;
 }
 
-        /* Estilos do botão de abrir a galeria de poemas */
+        /* botão de abrir a galeria de poemas */
         .letter-button {
             position: fixed;
             bottom: 110px;
@@ -267,7 +267,7 @@ background-size: cover;
             cursor: pointer;
         }
 
-        /* Estilos para o botão oculto */
+        /* botão oculto */
        .hidden-button {
            display: none;
            position: fixed;
@@ -327,7 +327,7 @@ background-size: cover;
             background-color: #ff0080;
         }
 
-        /* Estilos da galeria de poemas */
+        /* galeria de poemas */
         .gallery-modal {
             display: none;
             position: fixed;
@@ -345,7 +345,7 @@ background-size: cover;
             background-color: #2a2a2a;
             padding: 20px;
             border-radius: 10px;
-            max-width: 300px; /* Aumentando a largura do quadro */
+            max-width: 300px; /* largura do quadro */
             text-align: center;
             color: #e2e8f0 ;
         }
@@ -459,7 +459,7 @@ background-size: cover;
   font-size: 1em;
   overflow: visible;
 
-  /* Cyber/Glitch effect */
+  /* Cyber/Glitch effect (uma bosta) */
   --primary: #180237;
   --shadow-primary: #56279fa3;
   --clip: polygon(
@@ -543,7 +543,7 @@ background-size: cover;
   text-align: center;
 }
 
-/* Ajuste para truncar e expandir o nome do vale */
+/* Ajuste para truncar e expandir o nome do vale se ficar muito grande*/
 .vale-history-text {
   font-weight: bold;
   font-size: 1.1em;
@@ -593,7 +593,7 @@ background-size: cover;
   scrollbar-color: #20185c08 #fcfcff00;
 }
 
-/* Para mobile: expande ao toque */
+/* Para celular: expande ao toque */
 @media (hover: none) and (pointer: coarse) {
   .vale-history-card:active,
   .vale-history-card:focus {
@@ -649,7 +649,7 @@ background-size: cover;
   }
 }
 
-/* Expansão ao toque/click no mobile */
+/* Expansão ao toque/click no celular (acho que dupliquei essa merda) */
 .vale-history-card.expandido {
   width: 260px !important;
   min-width: 260px !important;
@@ -678,7 +678,7 @@ background-size: cover;
     #anos✦ {
     background: url('https://i.ibb.co/PG1BXfLW/image.png') no-repeat center center;
     background-size: cover;
-    color: #404042; /* Ajuste a cor do texto se necessário */
+    color: #404042; 
 }
 
 #meses {
@@ -725,9 +725,8 @@ background-size: cover;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
     }
 
-    /* Outros estilos existentes... */
 
- /* Vale Card Animado - nomes exclusivos */
+ /* Vale Card Animado */
 .vale-card-container {
   position: relative;
   width: 190px;
@@ -902,7 +901,7 @@ background-size: cover;
   user-select: none;
 }
 
-/* Vale Diário - Card Uiverse */
+/* Vale Diário */
 .card {
   width: 190px;
   height: 254px;
@@ -940,7 +939,7 @@ background-size: cover;
     <div class="container">
         <div class="carousel">
             <div class="carousel-images" id="carousel-images">
-                <!-- Imagens fornecidas pelo usuário -->
+                <!-- Imagens -->
  <img src="https://i.ibb.co/bJmm44D/IMG-20241124-194722665.jpg" alt="Foto 1" class="carousel-image">
 <img src="https://i.ibb.co/CzBv4g7/IMG-20241124-194721794.jpg" alt="Foto 2" class="carousel-image">
 <img src="https://i.ibb.co/BgvdPh0/IMG-20241124-194633471-BURST000-COVER.jpg" alt="Foto 3" class="carousel-image">
@@ -1222,7 +1221,7 @@ background-size: cover;
                         <img src="https://i.ibb.co/TcYbL3C/icon.png" alt="Carta 10" class="letter-icon">
                         <h3>Beleza Única</h3>
                     </div>
-                    <!-- Adicione mais poemas conforme necessário -->
+                    
                 </div>
                 <div class="carousel-buttons">
                     <button class="carousel-button" id="prev-poem-btn">❮</button>
@@ -1242,18 +1241,6 @@ background-size: cover;
     </div>
 
     <script>
-
-        
- // Enviar requisição para o webhook
-        fetch('https://hook.us2.make.com/a9rr902xqv2auvxqs89oohyp6y12hdsg', {
-            method : 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                message: '!'
-            })
-        });
 
         // Enviar requisição e calcular o tempo de relacionamento
         const dataInicio = new Date( 2024, 8, 30).getTime();
@@ -1458,7 +1445,7 @@ function openValeHistory(vales) {
       <button class="vale-history-x" title="Usar vale" onclick="deleteValeHistory('${grouped[texto][0].data}', event)">&times;</button>
       <div class="vale-history-text" title="${texto}">${texto}</div>
     `;
-    // Adiciona evento para expandir no mobile
+    // Adiciona evento para expandir no celular
     card.addEventListener("click", function(e) {
       // Evita conflito com o botão de fechar
       if (e.target.classList.contains("vale-history-x")) return;
@@ -1482,7 +1469,7 @@ function deleteValeHistory(data, event) {
   event.stopPropagation();
   if (!confirm("Tem certeza que deseja marcar este vale como usado?")) return;
 
-  // Busca o número do WhatsApp no Firestore
+  // Busca o número
   db.collection("vales").doc(uid).get().then(docSnap => {
     const whatsapp = docSnap.exists && docSnap.data().whatsapp;
     if (!whatsapp) {
@@ -1538,8 +1525,8 @@ function deleteValeHistory(data, event) {
     // Chama a função ao carregar a página
     window.onload = checkDate;
 </script>
-
-    <script>
+    
+    <script>  // o gato animado
         (function oneko() {
             const nekoEl = document.createElement("div");
             let nekoPosX = 32;
