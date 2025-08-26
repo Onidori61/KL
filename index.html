@@ -1749,9 +1749,6 @@ function deleteValeHistory(data, event) {
     <!-- Botão para Joguinhos -->
         <button class="joguinhos-button" onclick="window.location.href='joguinho.html'"></button>
     
-
-
-
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <!-- Firebase Messaging -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
@@ -1769,7 +1766,7 @@ function deleteValeHistory(data, event) {
   // Inicializa o Firebase UMA VEZ
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
-  const messaging = firebase.messaging();
+  const messaging = firebase.messaging(); 
 
   // Solicita permissão e obtém o token
   function solicitarPermissaoNotificacao() {
@@ -1787,6 +1784,39 @@ function deleteValeHistory(data, event) {
       }
     });
   }
+
+    // Função para registrar o IP do visitante no Firestore
+function registrarVisitantePorIP() {
+  // Verifica se já foi registrado
+  if (localStorage.getItem('kl-visitante-registrado')) {
+    console.log("Visitante já registrado neste navegador.");
+    return;
+  }
+  // Usa ipify para pegar o IP público
+  fetch('https://api.ipify.org?format=json')
+    .then(res => res.json())
+    .then(data => {
+      const ip = data.ip;
+      const agora = new Date();
+
+      // Salva no Firestore (coleção 'visitors')
+      db.collection('visitors').add({
+        ip: ip,
+        timestamp: agora
+      }).then(() => {
+        localStorage.setItem('kl-visitante-registrado', '1');
+        console.log("Visitante registrado com IP:", ip);
+      }).catch((err) => {
+        console.error("Erro ao registrar visitante:", err);
+      });
+    })
+    .catch(err => {
+      console.error("Erro ao obter IP:", err);
+    });
+}
+
+// Chama automaticamente ao carregar a página
+window.addEventListener('DOMContentLoaded', registrarVisitantePorIP);
 
   // CHAME AQUI para pedir permissão ao carregar a página
   solicitarPermissaoNotificacao();
